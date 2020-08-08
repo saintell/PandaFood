@@ -1,11 +1,11 @@
 package Modelo;
 
-public class detalle_factura {
+public class Detalle_factura {
 
     int cedula_cliente;
     int codigo_factura;
 
-    public detalle_factura(int cedula_cliente, int codigo_factura) {
+    public Detalle_factura(int cedula_cliente, int codigo_factura) {
         this.cedula_cliente = cedula_cliente;
         this.codigo_factura = codigo_factura;
     }
