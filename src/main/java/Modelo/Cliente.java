@@ -6,14 +6,12 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private int puntos;
-    private int codigo_factura;
 
-    public Cliente(int cedula, String nombre, String apellido, int puntos, int codigo_factura) {
+    public Cliente(int cedula, String nombre, String apellido, int puntos) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.puntos = puntos;
-        this.codigo_factura = codigo_factura;
     }
 
     public String getApellido() {
@@ -22,10 +20,6 @@ public class Cliente {
 
     public int getCedula() {
         return cedula;
-    }
-
-    public int getCodigo_factura() {
-        return codigo_factura;
     }
 
     public String getNombre() {
@@ -42,10 +36,6 @@ public class Cliente {
 
     public void setCedula(int cedula) {
         this.cedula = cedula;
-    }
-
-    public void setCodigo_factura(int codigo_factura) {
-        this.codigo_factura = codigo_factura;
     }
 
     public void setNombre(String nombre) {
