@@ -1926,7 +1926,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
     private void SignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutActionPerformed
 
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_SignOutActionPerformed
 
     private void fechaIngresoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaIngresoKeyTyped
