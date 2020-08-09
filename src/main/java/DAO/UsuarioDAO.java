@@ -1,37 +1,34 @@
 package DAO;
 
-import Modelo.Factura;
+import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
-public class FacturasDAO {
+public class UsuarioDAO {
 
     Connection cn;
     String sSql = " ";
     ResultSet rs;
     Statement st;
 
-    public FacturasDAO(ConexionBD cc) {
+    public UsuarioDAO(ConexionBD cc) {
 
         cn = cc.conectar();
     }
 
-    public boolean CrearFactura(Factura f) {
-        sSql = "INSERT INTO factura(codigo_factura,fecha,precio_total,cedula_cliente)"
-                + " values (?, ?, ?, ?)";
+    public boolean CrearUsuario(Usuario d) {
+        sSql = "INSERT INTO usuario(nombre_usuario,contraseña)"
+                + " values (?, ?)";
 
         try {
             PreparedStatement pst = cn.prepareStatement(sSql);
 
-            pst.setInt(1, f.getCodigo_factura());
-            pst.setDate(2, f.getFecha());
-            pst.setInt(3, f.getPrecio_total());
-            pst.setLong(4, f.getCedula_cliente());
+            pst.setString(1, d.getNom_usuario());
+            pst.setString(2, d.getContraseña());
 
             int n = pst.executeUpdate();
 
@@ -52,4 +49,17 @@ public class FacturasDAO {
 
     }
 
+    public ResultSet buscar(String usuario) throws SQLException {
+        sSql = "SELECT * FROM usuario WHERE nombre_usuario = '" + usuario + "' ";
+        st = cn.createStatement();
+        rs = st.executeQuery(sSql);
+        return rs;
+    }
+
+    public ResultSet buscar1() throws SQLException {
+        sSql = "SELECT * FROM usuario WHERE nombre_usuario != ''";
+        st = cn.createStatement();
+        rs = st.executeQuery(sSql);
+        return rs;
+    }
 }

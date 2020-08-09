@@ -86,6 +86,26 @@ public class ClientesDAO {
             return false;
         }
     }
+    public boolean acumularPuntos(String cedula , String puntos) {
+
+        sSql = "UPDATE cliente SET  puntos = puntos + '" + puntos + "' WHERE cedula_cliente = '" + cedula + "'";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSql);
+
+            int i = pst.executeUpdate();
+
+            if (i != 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+    }
     
     public DefaultTableModel listar(String busca) {
 

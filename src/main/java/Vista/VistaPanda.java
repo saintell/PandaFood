@@ -32,11 +32,6 @@ public class VistaPanda extends javax.swing.JFrame {
 
     ResultSet rs;
 
-    public static String nombre_cliente = "";
-    public static String apellido_cliente = "";
-    public static int celular = 0;
-    public static int puntos = 0;
-
     public VistaPanda() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -1948,7 +1943,6 @@ public class VistaPanda extends javax.swing.JFrame {
         try {
             registrarFactura();
         } catch (ParseException ex) {
-            Logger.getLogger(VistaPanda.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAsignarActionPerformed
 
@@ -2688,11 +2682,11 @@ public class VistaPanda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraSuperior;
     private javax.swing.JPanel ConsutarCientesPanel;
-    private javax.swing.JPanel Contenedor;
+    public static javax.swing.JPanel Contenedor;
     private javax.swing.JPanel FacturaPanel;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel MenuLateral;
-    private javax.swing.JPanel PerfilPanel;
+    public static javax.swing.JPanel PerfilPanel;
     private javax.swing.JButton SignOut;
     private javax.swing.JPanel TituloPanel;
     private javax.swing.JPanel TituloPanel2;
@@ -2814,6 +2808,22 @@ public class VistaPanda extends javax.swing.JFrame {
         }
     }
 
+    public void activarCamposFactura() {
+
+        txfIdentificacion.setEditable(true);
+        txfNombre.setEditable(true);
+        txfApellidos.setEditable(true);
+        txfCelular.setEditable(true);
+    }
+
+    public void desactivarCamposFactura() {
+        txfIdentificacion.setEditable(false);
+        txfNombre.setEditable(false);
+        txfApellidos.setEditable(false);
+        txfCelular.setEditable(false);
+
+    }
+
     public void limpiarFactura() {
 
         try {
@@ -2828,6 +2838,7 @@ public class VistaPanda extends javax.swing.JFrame {
             this.txfTotalCompra.setText("TOTAL");
             this.lblPuntosCompra.setText("0");
             this.txfNumFactura.requestFocus(true);
+            activarCamposFactura();
         } catch (ParseException ex) {
         }
     }
@@ -2932,6 +2943,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 if (cDao.CrearCliente(c)) {
 
                     JOptionPane.showMessageDialog(null, "Cliente registrado correctamente.");
+                    desactivarCamposFactura();
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifique que su información esté correcta.");
                 }
@@ -2965,9 +2977,13 @@ public class VistaPanda extends javax.swing.JFrame {
                 Factura f = new Factura(codigo, fecha, total_compra, cedula);
 
                 if (fDao.CrearFactura(f)) {
+                    if (cDao.acumularPuntos(Integer.toString(cedula), lblPuntosCompra.getText())) {
+                        JOptionPane.showMessageDialog(null, "Factura registrada correctamente.");
+                        limpiarFactura();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se han acumulado los puntos edita al cliente para asignarlos");
+                    }
 
-                    JOptionPane.showMessageDialog(null, "Factura registrada correctamente.");
-                    limpiarFactura();
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifique que su información esté correcta.");
                 }
@@ -3076,20 +3092,24 @@ public class VistaPanda extends javax.swing.JFrame {
     public void buscarClienteFactura() {
 
         try {
+            String nombre_cliente = "";
+            String apellido_cliente = "";
+            String celular = "";
+            String puntos = "";
             String cedula = txfIdentificacion.getText().trim();
 
             rs = cDao.buscar(cedula);
 
             if (rs.next()) {
-                nombre_cliente = rs.getString("nombre_cliente");
-                apellido_cliente = rs.getString("apellido_cliente");
-                celular = rs.getInt("celular");
-                puntos = rs.getInt("puntos");
+                nombre_cliente = rs.getString("nombre");
+                apellido_cliente = rs.getString("apellido");
+                celular = rs.getString("celular");
+                puntos = rs.getString("puntos");
                 txfIdentificacion.setEditable(false);
-                txfNombre.setText(rs.getString("nombre") );
-                txfApellidos.setText(rs.getString("apellido"));
-                txfCelular.setText(rs.getString("celular"));
-                txfPuntos.setText("puntos");
+                txfNombre.setText(nombre_cliente);
+                txfApellidos.setText(apellido_cliente);
+                txfCelular.setText(celular);
+                txfPuntos.setText(puntos);
                 txfNombre.setEditable(false);
                 txfApellidos.setEditable(false);
                 txfCelular.setEditable(false);
