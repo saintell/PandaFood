@@ -1,13 +1,12 @@
 DROP TABLE usuario cascade;
 DROP TABLE factura cascade;
 DROP TABLE cliente cascade;
-DROP TABLE detalle_factura;
 
 CREATE TABLE usuario (nombre_usuario varchar(20) not null PRIMARY KEY, contraseña varchar(20) not null);
 
-CREATE TABLE cliente (cedula_cliente int not null PRIMARY KEY, nombre varchar(20) not null, apellido varchar(20) not null,puntos int not null);
+CREATE TABLE cliente (cedula_cliente int not null PRIMARY KEY, nombre varchar(20) not null, apellido varchar(20) not null, celular bigint, puntos bigint not null);
 
 CREATE TABLE factura (codigo_factura int not null PRIMARY KEY, fecha date not null,precio_total int not null,cedula_cliente int not null,FOREIGN KEY (cedula_cliente) REFERENCES cliente (cedula_cliente));
 
-CREATE TABLE detalle_factura(cedula_cliente int not null,codigo_factura int not null,  FOREIGN KEY (codigo_factura) REFERENCES factura (codigo_factura),FOREIGN KEY (cedula_cliente) REFERENCES cliente (cedula_cliente) )
+
 
