@@ -1,16 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
  *
- * @author Alvaro José
+ * Autores: Alvaro José Tobar y Santiago Pineda.
  */
 public class VistaPanda extends javax.swing.JFrame {
 
@@ -104,6 +104,21 @@ public class VistaPanda extends javax.swing.JFrame {
         ConsutarCientesPanel = new javax.swing.JPanel();
         TituloPanel2 = new javax.swing.JPanel();
         lblTituloCliente = new javax.swing.JLabel();
+        jLabel142 = new javax.swing.JLabel();
+        txfIdentificacionCliente = new javax.swing.JTextField();
+        jLabel144 = new javax.swing.JLabel();
+        txfNombreCliente = new javax.swing.JTextField();
+        jLabel145 = new javax.swing.JLabel();
+        txfApellidosCliente = new javax.swing.JTextField();
+        jLabel146 = new javax.swing.JLabel();
+        txfCelularCliente = new javax.swing.JTextField();
+        txfPuntosCliente = new javax.swing.JTextField();
+        jLabel147 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaClientes = new javax.swing.JTable();
+        txfBuscar = new javax.swing.JTextField();
+        jLabel148 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -795,8 +810,9 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel136.setText("N° de Factura:");
 
         jLabel137.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel137.setText("ID Cliente:");
+        jLabel137.setText("Identificación del Cliente:");
 
+        fechaIngreso.setForeground(new java.awt.Color(153, 153, 153));
         fechaIngreso.setDateFormatString("dd-MM-yyyy");
         fechaIngreso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fechaIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -989,6 +1005,7 @@ public class VistaPanda extends javax.swing.JFrame {
         txfCelular.setText("CELULAR");
         txfCelular.setToolTipText("");
         txfCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfCelular.setNextFocusableComponent(txfTotalCompra);
         txfCelular.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txfCelularFocusGained(evt);
@@ -1061,12 +1078,14 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel143.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel143.setText("Puntos de cliente:");
 
+        txfPuntos.setEditable(false);
         txfPuntos.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         txfPuntos.setForeground(new java.awt.Color(153, 153, 153));
         txfPuntos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txfPuntos.setText("PUNTOS");
         txfPuntos.setToolTipText("");
         txfPuntos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfPuntos.setFocusable(false);
         txfPuntos.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txfPuntosFocusGained(evt);
@@ -1155,27 +1174,23 @@ public class VistaPanda extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FacturaPanelLayout.createSequentialGroup()
                 .addGap(0, 84, Short.MAX_VALUE)
                 .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txfIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel139)
+                    .addComponent(txfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel143)
+                    .addComponent(jLabel137))
+                .addGap(48, 48, 48)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel138)
                     .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel137)
-                        .addGap(330, 330, 330)
-                        .addComponent(jLabel138))
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txfIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel139)
-                            .addComponent(txfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel143))
-                        .addGap(48, 48, 48)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(FacturaPanelLayout.createSequentialGroup()
-                                .addComponent(txfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimpiarProveedor3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel141)
-                            .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel140)
-                            .addComponent(txfTotalCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimpiarProveedor3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel141)
+                    .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel140)
+                    .addComponent(txfTotalCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74))
         );
         FacturaPanelLayout.setVerticalGroup(
@@ -1248,28 +1263,339 @@ public class VistaPanda extends javax.swing.JFrame {
         TituloPanel2.setLayout(TituloPanel2Layout);
         TituloPanel2Layout.setHorizontalGroup(
             TituloPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTituloCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+            .addComponent(lblTituloCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
         );
         TituloPanel2Layout.setVerticalGroup(
             TituloPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTituloCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(lblTituloCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
+
+        jLabel142.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel142.setText("Identificación del Cliente:");
+
+        txfIdentificacionCliente.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        txfIdentificacionCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txfIdentificacionCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfIdentificacionCliente.setText("IDENTIFICACIÓN");
+        txfIdentificacionCliente.setToolTipText("");
+        txfIdentificacionCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfIdentificacionCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfIdentificacionClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txfIdentificacionClienteFocusLost(evt);
+            }
+        });
+        txfIdentificacionCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txfIdentificacionClienteMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txfIdentificacionClienteMouseReleased(evt);
+            }
+        });
+        txfIdentificacionCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfIdentificacionClienteActionPerformed(evt);
+            }
+        });
+        txfIdentificacionCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txfIdentificacionClienteKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfIdentificacionClienteKeyTyped(evt);
+            }
+        });
+
+        jLabel144.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel144.setText("Nombres:");
+
+        txfNombreCliente.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        txfNombreCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txfNombreCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfNombreCliente.setText("NOMBRES");
+        txfNombreCliente.setToolTipText("");
+        txfNombreCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfNombreCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfNombreClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txfNombreClienteFocusLost(evt);
+            }
+        });
+        txfNombreCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txfNombreClienteMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txfNombreClienteMouseReleased(evt);
+            }
+        });
+        txfNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfNombreClienteActionPerformed(evt);
+            }
+        });
+        txfNombreCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txfNombreClienteKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfNombreClienteKeyTyped(evt);
+            }
+        });
+
+        jLabel145.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel145.setText("Apellidos:");
+
+        txfApellidosCliente.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        txfApellidosCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txfApellidosCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfApellidosCliente.setText("APELLIDOS");
+        txfApellidosCliente.setToolTipText("");
+        txfApellidosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfApellidosCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfApellidosClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txfApellidosClienteFocusLost(evt);
+            }
+        });
+        txfApellidosCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txfApellidosClienteMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txfApellidosClienteMouseReleased(evt);
+            }
+        });
+        txfApellidosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfApellidosClienteActionPerformed(evt);
+            }
+        });
+        txfApellidosCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txfApellidosClienteKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txfApellidosClienteKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfApellidosClienteKeyTyped(evt);
+            }
+        });
+
+        jLabel146.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel146.setText("Celular:");
+
+        txfCelularCliente.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        txfCelularCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txfCelularCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfCelularCliente.setText("CELULAR");
+        txfCelularCliente.setToolTipText("");
+        txfCelularCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfCelularCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfCelularClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txfCelularClienteFocusLost(evt);
+            }
+        });
+        txfCelularCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txfCelularClienteMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txfCelularClienteMouseReleased(evt);
+            }
+        });
+        txfCelularCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfCelularClienteActionPerformed(evt);
+            }
+        });
+        txfCelularCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txfCelularClienteKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfCelularClienteKeyTyped(evt);
+            }
+        });
+
+        txfPuntosCliente.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        txfPuntosCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txfPuntosCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfPuntosCliente.setText("PUNTOS");
+        txfPuntosCliente.setToolTipText("");
+        txfPuntosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfPuntosCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfPuntosClienteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txfPuntosClienteFocusLost(evt);
+            }
+        });
+        txfPuntosCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txfPuntosClienteMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txfPuntosClienteMouseReleased(evt);
+            }
+        });
+        txfPuntosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfPuntosClienteActionPerformed(evt);
+            }
+        });
+        txfPuntosCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txfPuntosClienteKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfPuntosClienteKeyTyped(evt);
+            }
+        });
+
+        jLabel147.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel147.setText("Puntos de cliente:");
+
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cédula", "Nombre", "Celular", "Puntos Acumulados"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaClientes);
+
+        txfBuscar.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        txfBuscar.setForeground(new java.awt.Color(153, 153, 153));
+        txfBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txfBuscar.setToolTipText("");
+        txfBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        txfBuscar.setNextFocusableComponent(txfIdentificacionCliente);
+        txfBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txfBuscarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txfBuscarFocusLost(evt);
+            }
+        });
+        txfBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txfBuscarMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txfBuscarMouseReleased(evt);
+            }
+        });
+        txfBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfBuscarActionPerformed(evt);
+            }
+        });
+        txfBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txfBuscarKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfBuscarKeyTyped(evt);
+            }
+        });
+
+        jLabel148.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel148.setText("Buscar:");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotónBuscar.png"))); // NOI18N
+        jButton1.setFocusable(false);
 
         javax.swing.GroupLayout ConsutarCientesPanelLayout = new javax.swing.GroupLayout(ConsutarCientesPanel);
         ConsutarCientesPanel.setLayout(ConsutarCientesPanelLayout);
         ConsutarCientesPanelLayout.setHorizontalGroup(
             ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsutarCientesPanelLayout.createSequentialGroup()
-                .addContainerGap(282, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TituloPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197))
+                .addGap(239, 239, 239))
+            .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel148)
+                    .addComponent(txfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                        .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txfCelularCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ConsutarCientesPanelLayout.createSequentialGroup()
+                                    .addComponent(jLabel142)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txfIdentificacionCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                            .addComponent(jLabel146))
+                        .addGap(35, 35, 35)
+                        .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel147)
+                            .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txfPuntosCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel144, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txfNombreCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                                .addGap(35, 35, 35)
+                                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel145)
+                                    .addComponent(txfApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         ConsutarCientesPanelLayout.setVerticalGroup(
             ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(TituloPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(612, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                        .addComponent(TituloPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel142)
+                                .addComponent(jLabel144))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfIdentificacionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txfNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel145)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel146)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel147)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfPuntosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel148)
+                .addGap(8, 8, 8)
+                .addComponent(txfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         Contenedor.add(ConsutarCientesPanel, "card4");
@@ -1336,14 +1662,19 @@ public class VistaPanda extends javax.swing.JFrame {
 
     private void btn_2consultarEmpleados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_2consultarEmpleados
 
-        asignarColor(btn_2);
-        ind_2.setOpaque(true);
-        resetearColor(new JPanel[]{btn_1, btn_3}, new JPanel[]{ind_1, ind_3});
-        Contenedor.removeAll();
-        Contenedor.add(FacturaPanel);
-        txfNumFactura.requestFocus(true);
-        Contenedor.repaint();
-        Contenedor.revalidate();
+        try {
+            asignarColor(btn_2);
+            ind_2.setOpaque(true);
+            resetearColor(new JPanel[]{btn_1, btn_3}, new JPanel[]{ind_1, ind_3});
+            Contenedor.removeAll();
+            Contenedor.add(FacturaPanel);
+            txfNumFactura.requestFocus(true);
+            java.util.Date fechaParseada = new SimpleDateFormat("dd/MM/yyyy").parse(fechaActual());
+            fechaIngreso.setDate(fechaParseada);
+            Contenedor.repaint();
+            Contenedor.revalidate();
+        } catch (ParseException ex) {
+        }
     }//GEN-LAST:event_btn_2consultarEmpleados
 
     private void btn_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_2MouseEntered
@@ -1361,14 +1692,19 @@ public class VistaPanda extends javax.swing.JFrame {
 
     private void btn_2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_2MousePressed
 
-        asignarColor(btn_2);
-        ind_2.setOpaque(true);
-        resetearColor(new JPanel[]{btn_1, btn_3}, new JPanel[]{ind_1, ind_3});
-        Contenedor.removeAll();
-        Contenedor.add(FacturaPanel);
-        txfNumFactura.requestFocus(true);
-        Contenedor.repaint();
-        Contenedor.revalidate();
+        try {
+            asignarColor(btn_2);
+            ind_2.setOpaque(true);
+            resetearColor(new JPanel[]{btn_1, btn_3}, new JPanel[]{ind_1, ind_3});
+            Contenedor.removeAll();
+            Contenedor.add(FacturaPanel);
+            txfNumFactura.requestFocus(true);
+            java.util.Date fechaParseada = new SimpleDateFormat("dd/MM/yyyy").parse(fechaActual());
+            fechaIngreso.setDate(fechaParseada);
+            Contenedor.repaint();
+            Contenedor.revalidate();
+        } catch (ParseException ex) {
+        }
     }//GEN-LAST:event_btn_2MousePressed
 
     private void btn_3consultarEmpleados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_3consultarEmpleados
@@ -1446,7 +1782,12 @@ public class VistaPanda extends javax.swing.JFrame {
 
     private void fechaIngresoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaIngresoKeyTyped
 
-        evt.consume();
+        char c = evt.getKeyChar();
+
+        if (Character.isAlphabetic(c) || Character.isSpaceChar(c)) {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_fechaIngresoKeyTyped
 
     private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
@@ -1454,7 +1795,8 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsignarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+
+        limpiarFactura();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnLimpiarProveedor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProveedor3ActionPerformed
@@ -1477,13 +1819,13 @@ public class VistaPanda extends javax.swing.JFrame {
 
         char c = evt.getKeyChar();
 
-        if (Character.isLowerCase(c)) {
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
 
-            String cad = ("" + c).toUpperCase();
-            c = cad.charAt(0);
-            evt.setKeyChar(c);
+        if (txfIdentificacion.getText().length() >= 10) {
 
-        } else {
+            evt.consume();
 
         }
     }//GEN-LAST:event_txfIdentificacionKeyTyped
@@ -1505,7 +1847,18 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_txfNombreKeyPressed
 
     private void txfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreKeyTyped
-        // TODO add your handling code here:
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c) && !Character.isSpaceChar(c)) {
+            evt.consume();
+        }
+
+        if (txfNombre.getText().length() >= 20) {
+
+            evt.consume();
+
+        }
     }//GEN-LAST:event_txfNombreKeyTyped
 
     private void txfApellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfApellidosMouseClicked
@@ -1526,7 +1879,18 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_txfApellidosKeyPressed
 
     private void txfApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfApellidosKeyTyped
-        // TODO add your handling code here:
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c) && !Character.isSpaceChar(c)) {
+            evt.consume();
+        }
+
+        if (txfApellidos.getText().length() >= 20) {
+
+            evt.consume();
+
+        }
     }//GEN-LAST:event_txfApellidosKeyTyped
 
     private void txfCelularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfCelularMouseClicked
@@ -1546,7 +1910,19 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_txfCelularKeyPressed
 
     private void txfCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfCelularKeyTyped
-        // TODO add your handling code here:
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+
+        if (txfCelular.getText().length() >= 10) {
+
+            evt.consume();
+
+        }
+
     }//GEN-LAST:event_txfCelularKeyTyped
 
     private void txfTotalCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfTotalCompraMouseClicked
@@ -1599,13 +1975,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
             char c = evt.getKeyChar();
 
-            if (Character.isAlphabetic(c)) {
-
-                evt.consume();
-            }
-
-            if (Character.isSpaceChar(c)) {
-
+            if (!Character.isDigit(c)) {
                 evt.consume();
             }
 
@@ -1687,7 +2057,18 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_txfNumFacturaKeyPressed
 
     private void txfNumFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNumFacturaKeyTyped
-        // TODO add your handling code here:
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+
+        if (txfNumFactura.getText().length() >= 5) {
+
+            evt.consume();
+
+        }
     }//GEN-LAST:event_txfNumFacturaKeyTyped
 
     private void txfIdentificacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfIdentificacionFocusGained
@@ -1792,6 +2173,281 @@ public class VistaPanda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txfTotalCompraFocusLost
 
+    private void txfIdentificacionClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfIdentificacionClienteFocusGained
+
+        if (txfIdentificacionCliente.getText().trim().equalsIgnoreCase("IDENTIFICACIÓN")) {
+
+            txfIdentificacionCliente.setText(null);
+        }
+
+    }//GEN-LAST:event_txfIdentificacionClienteFocusGained
+
+    private void txfIdentificacionClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfIdentificacionClienteFocusLost
+
+        if (txfIdentificacionCliente.getText().trim().length() == 0) {
+
+            txfIdentificacionCliente.setText("IDENTIFICACIÓN");
+        }
+    }//GEN-LAST:event_txfIdentificacionClienteFocusLost
+
+    private void txfIdentificacionClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfIdentificacionClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfIdentificacionClienteMouseClicked
+
+    private void txfIdentificacionClienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfIdentificacionClienteMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfIdentificacionClienteMouseReleased
+
+    private void txfIdentificacionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfIdentificacionClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfIdentificacionClienteActionPerformed
+
+    private void txfIdentificacionClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfIdentificacionClienteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfIdentificacionClienteKeyPressed
+
+    private void txfIdentificacionClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfIdentificacionClienteKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+
+        if (txfIdentificacionCliente.getText().length() >= 10) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txfIdentificacionClienteKeyTyped
+
+    private void txfNombreClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfNombreClienteFocusGained
+
+        if (txfNombreCliente.getText().trim().equalsIgnoreCase("NOMBRES")) {
+
+            txfNombreCliente.setText(null);
+        }
+    }//GEN-LAST:event_txfNombreClienteFocusGained
+
+    private void txfNombreClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfNombreClienteFocusLost
+
+        if (txfNombreCliente.getText().trim().length() == 0) {
+
+            txfNombreCliente.setText("NOMBRES");
+        }
+    }//GEN-LAST:event_txfNombreClienteFocusLost
+
+    private void txfNombreClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfNombreClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfNombreClienteMouseClicked
+
+    private void txfNombreClienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfNombreClienteMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfNombreClienteMouseReleased
+
+    private void txfNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNombreClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfNombreClienteActionPerformed
+
+    private void txfNombreClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreClienteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfNombreClienteKeyPressed
+
+    private void txfNombreClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreClienteKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c) && !Character.isSpaceChar(c)) {
+            evt.consume();
+        }
+
+        if (txfNombreCliente.getText().length() >= 20) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txfNombreClienteKeyTyped
+
+    private void txfApellidosClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfApellidosClienteFocusGained
+
+        if (txfApellidosCliente.getText().trim().equalsIgnoreCase("APELLIDOS")) {
+
+            txfApellidosCliente.setText(null);
+        }
+    }//GEN-LAST:event_txfApellidosClienteFocusGained
+
+    private void txfApellidosClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfApellidosClienteFocusLost
+
+        if (txfApellidosCliente.getText().trim().length() == 0) {
+
+            txfApellidosCliente.setText("APELLIDOS");
+        }
+    }//GEN-LAST:event_txfApellidosClienteFocusLost
+
+    private void txfApellidosClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfApellidosClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfApellidosClienteMouseClicked
+
+    private void txfApellidosClienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfApellidosClienteMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfApellidosClienteMouseReleased
+
+    private void txfApellidosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfApellidosClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfApellidosClienteActionPerformed
+
+    private void txfApellidosClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfApellidosClienteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfApellidosClienteKeyPressed
+
+    private void txfApellidosClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfApellidosClienteKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfApellidosClienteKeyReleased
+
+    private void txfApellidosClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfApellidosClienteKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c) && !Character.isSpaceChar(c)) {
+            evt.consume();
+        }
+
+        if (txfApellidosCliente.getText().length() >= 20) {
+
+            evt.consume();
+
+        }
+
+    }//GEN-LAST:event_txfApellidosClienteKeyTyped
+
+    private void txfCelularClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfCelularClienteFocusGained
+
+        if (txfCelularCliente.getText().trim().equalsIgnoreCase("CELULAR")) {
+
+            txfCelularCliente.setText(null);
+        }
+    }//GEN-LAST:event_txfCelularClienteFocusGained
+
+    private void txfCelularClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfCelularClienteFocusLost
+
+        if (txfCelularCliente.getText().trim().length() == 0) {
+
+            txfCelularCliente.setText("CELULAR");
+        }
+    }//GEN-LAST:event_txfCelularClienteFocusLost
+
+    private void txfCelularClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfCelularClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfCelularClienteMouseClicked
+
+    private void txfCelularClienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfCelularClienteMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfCelularClienteMouseReleased
+
+    private void txfCelularClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCelularClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfCelularClienteActionPerformed
+
+    private void txfCelularClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfCelularClienteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfCelularClienteKeyPressed
+
+    private void txfCelularClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfCelularClienteKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+
+        if (txfCelularCliente.getText().length() >= 10) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txfCelularClienteKeyTyped
+
+    private void txfPuntosClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfPuntosClienteFocusGained
+
+        if (txfPuntosCliente.getText().trim().equalsIgnoreCase("PUNTOS")) {
+
+            txfPuntosCliente.setText(null);
+        }
+    }//GEN-LAST:event_txfPuntosClienteFocusGained
+
+    private void txfPuntosClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfPuntosClienteFocusLost
+
+        if (txfPuntosCliente.getText().trim().length() == 0) {
+
+            txfPuntosCliente.setText("PUNTOS");
+        }
+    }//GEN-LAST:event_txfPuntosClienteFocusLost
+
+    private void txfPuntosClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfPuntosClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfPuntosClienteMouseClicked
+
+    private void txfPuntosClienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfPuntosClienteMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfPuntosClienteMouseReleased
+
+    private void txfPuntosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfPuntosClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfPuntosClienteActionPerformed
+
+    private void txfPuntosClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfPuntosClienteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfPuntosClienteKeyPressed
+
+    private void txfPuntosClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfPuntosClienteKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+
+        if (txfPuntosCliente.getText().length() >= 5) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txfPuntosClienteKeyTyped
+
+    private void txfBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfBuscarFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfBuscarFocusGained
+
+    private void txfBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txfBuscarFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfBuscarFocusLost
+
+    private void txfBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfBuscarMouseClicked
+
+    private void txfBuscarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfBuscarMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfBuscarMouseReleased
+
+    private void txfBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfBuscarActionPerformed
+
+    private void txfBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfBuscarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfBuscarKeyPressed
+
+    private void txfBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfBuscarKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && !Character.isAlphabetic(c)) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txfBuscarKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraSuperior;
@@ -1817,6 +2473,7 @@ public class VistaPanda extends javax.swing.JFrame {
     public static javax.swing.JPanel ind_1;
     public static javax.swing.JPanel ind_2;
     public static javax.swing.JPanel ind_3;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1827,7 +2484,13 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel140;
     private javax.swing.JLabel jLabel141;
+    private javax.swing.JLabel jLabel142;
     private javax.swing.JLabel jLabel143;
+    private javax.swing.JLabel jLabel144;
+    private javax.swing.JLabel jLabel145;
+    private javax.swing.JLabel jLabel146;
+    private javax.swing.JLabel jLabel147;
+    private javax.swing.JLabel jLabel148;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
@@ -1854,6 +2517,7 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     public static javax.swing.JLabel lblApellido;
     public static javax.swing.JLabel lblCargo;
@@ -1869,14 +2533,27 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloFactura;
     public static javax.swing.JLabel lblUsuario;
     private javax.swing.JTable tablaAgotados;
+    private javax.swing.JTable tablaClientes;
     private javax.swing.JTextField txfApellidos;
+    private javax.swing.JTextField txfApellidosCliente;
+    private javax.swing.JTextField txfBuscar;
     private javax.swing.JTextField txfCelular;
+    private javax.swing.JTextField txfCelularCliente;
     private javax.swing.JTextField txfIdentificacion;
+    private javax.swing.JTextField txfIdentificacionCliente;
     private javax.swing.JTextField txfNombre;
+    private javax.swing.JTextField txfNombreCliente;
     private javax.swing.JTextField txfNumFactura;
     private javax.swing.JTextField txfPuntos;
+    private javax.swing.JTextField txfPuntosCliente;
     private javax.swing.JTextField txfTotalCompra;
     // End of variables declaration//GEN-END:variables
+
+    public static String fechaActual() {
+        Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatoFecha.format(fecha);
+    }
 
     private void asignarColor(JPanel pane) {
         pane.setBackground(new Color(236, 37, 32));
@@ -1889,6 +2566,25 @@ public class VistaPanda extends javax.swing.JFrame {
         }
         for (int i = 0; i < indicators.length; i++) {
             indicators[i].setOpaque(false);
+        }
+
+    }
+
+    public void limpiarFactura() {
+
+        try {
+            this.txfNumFactura.setText(null);
+            java.util.Date fechaParseada = new SimpleDateFormat("dd/MM/yyyy").parse(fechaActual());
+            fechaIngreso.setDate(fechaParseada);
+            this.txfIdentificacion.setText("IDENTIFICACIÓN");
+            this.txfNombre.setText("NOMBRES");
+            this.txfApellidos.setText("APELLIDOS");
+            this.txfCelular.setText("CELULAR");
+            this.txfPuntos.setText("PUNTOS");
+            this.txfTotalCompra.setText("TOTAL");
+            this.lblPuntosCompra.setText("0");
+            this.txfNumFactura.requestFocus(true);
+        } catch (ParseException ex) {
         }
 
     }
