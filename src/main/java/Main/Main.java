@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main {
-
+    
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -23,25 +23,26 @@ public class Main {
         } catch (IllegalAccessException ex) {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
         }
-
+        
         try {
             UsuarioDAO uDao = new UsuarioDAO();
             ResultSet rs = uDao.buscar1();
-
+            
             if (!rs.next()) {
-
+                
                 RegistrarGerente registrar = new RegistrarGerente();
                 registrar.setVisible(true);
-
+                
             } else {
-
+                
                 Login login = new Login();
                 login.setVisible(true);
+//                VistaPanda v = new VistaPanda();
+//                v.setVisible(true);
             }
         } catch (SQLException ex) {
-
-            System.out.println(ex.getMessage());
+            
         }
     }
-
+    
 }

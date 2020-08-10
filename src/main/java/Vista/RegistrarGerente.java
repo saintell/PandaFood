@@ -430,8 +430,7 @@ public class RegistrarGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_signInActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txfContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfContraseñaActionPerformed

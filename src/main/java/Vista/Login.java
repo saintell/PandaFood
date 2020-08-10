@@ -1,6 +1,7 @@
 package Vista;
 
 import DAO.UsuarioDAO;
+import static Vista.VistaPanda.btn_1;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.ResultSet;
@@ -31,6 +32,8 @@ public class Login extends javax.swing.JFrame {
         Font dvs = new Font("DejaVu Sans", Font.PLAIN, 18);
         txfContraseña.setFont(dvs);
         txfContraseña.setEchoChar('•');
+        this.getContentPane().setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+        this.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 
     }
 
@@ -38,22 +41,28 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        btnMostrarContraseña = new javax.swing.JButton();
         txfUsuario = new javax.swing.JTextField();
         txfContraseña = new javax.swing.JPasswordField();
-        signIn = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        btnMostrarContraseña = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        signIn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMostrarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btnMostrar.png"))); // NOI18N
+        btnMostrarContraseña.setBorderPainted(false);
+        btnMostrarContraseña.setContentAreaFilled(false);
+        btnMostrarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMostrarContraseña.setFocusable(false);
+        btnMostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarContraseñaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMostrarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 40, -1));
 
         txfUsuario.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         txfUsuario.setForeground(new java.awt.Color(153, 153, 153));
@@ -82,6 +91,7 @@ public class Login extends javax.swing.JFrame {
                 txfUsuarioKeyTyped(evt);
             }
         });
+        getContentPane().add(txfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 250, 40));
 
         txfContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txfContraseña.setForeground(new java.awt.Color(153, 153, 153));
@@ -106,20 +116,7 @@ public class Login extends javax.swing.JFrame {
                 txfContraseñaKeyPressed(evt);
             }
         });
-
-        signIn.setBackground(new java.awt.Color(255, 255, 255));
-        signIn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        signIn.setForeground(new java.awt.Color(255, 255, 255));
-        signIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Bton Login.png"))); // NOI18N
-        signIn.setBorderPainted(false);
-        signIn.setContentAreaFilled(false);
-        signIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signIn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/bton login cursor oscuro.png"))); // NOI18N
-        signIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signInActionPerformed(evt);
-            }
-        });
+        getContentPane().add(txfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 250, 40));
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -134,78 +131,25 @@ public class Login extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 100, 50));
 
-        btnMostrarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/btnMostrar.png"))); // NOI18N
-        btnMostrarContraseña.setBorderPainted(false);
-        btnMostrarContraseña.setContentAreaFilled(false);
-        btnMostrarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMostrarContraseña.setFocusable(false);
-        btnMostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
+        signIn.setBackground(new java.awt.Color(255, 255, 255));
+        signIn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        signIn.setForeground(new java.awt.Color(255, 255, 255));
+        signIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Bton Login.png"))); // NOI18N
+        signIn.setBorderPainted(false);
+        signIn.setContentAreaFilled(false);
+        signIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signIn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/bton login cursor oscuro.png"))); // NOI18N
+        signIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarContraseñaActionPerformed(evt);
+                signInActionPerformed(evt);
             }
         });
+        getContentPane().add(signIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 96, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnMostrarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 12, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(signIn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txfContraseña)
-                            .addComponent(btnMostrarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(signIn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 111, 462, -1));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("INICIAR SESION");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 380, 100));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cabecera_.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 111));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FondoLogin.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -304,9 +248,8 @@ public class Login extends javax.swing.JFrame {
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
         verificar();
-
-        setColor(vistaPanda.btn_1);
-        vistaPanda.ind_1.setOpaque(true);
+        asignarColor(vistaPanda.btn_1);
+        vistaPanda.ind_1.setOpaque(false);
         resetColor(new JPanel[]{vistaPanda.btn_2, vistaPanda.btn_3}, new JPanel[]{vistaPanda.ind_2, vistaPanda.ind_3});
         vistaPanda.Contenedor.removeAll();
         vistaPanda.Contenedor.add(vistaPanda.PerfilPanel);
@@ -324,8 +267,8 @@ public class Login extends javax.swing.JFrame {
         try {
             verificar();
 
-            setColor(vistaPanda.btn_1);
-            vistaPanda.ind_1.setOpaque(true);
+            asignarColor(btn_1);
+            vistaPanda.ind_1.setOpaque(false);
             resetColor(new JPanel[]{vistaPanda.btn_2, vistaPanda.btn_3}, new JPanel[]{vistaPanda.ind_2, vistaPanda.ind_3});
             vistaPanda.Contenedor.removeAll();
             vistaPanda.Contenedor.add(vistaPanda.PerfilPanel);
@@ -391,11 +334,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMostrarContraseña;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton signIn;
     private javax.swing.JPasswordField txfContraseña;
     private javax.swing.JTextField txfUsuario;
@@ -422,7 +361,6 @@ public class Login extends javax.swing.JFrame {
 
                 } else {
 
-                
                     vistaPanda = new VistaPanda();
                     vistaPanda.setVisible(true);
                     vistaPanda.lblUsuario.setText(rs.getString(1));
@@ -441,4 +379,7 @@ public class Login extends javax.swing.JFrame {
 
     }
 
+    private void asignarColor(JPanel pane) {
+        pane.setBackground(new Color(236, 37, 32));
+    }
 }

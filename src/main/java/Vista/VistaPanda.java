@@ -28,6 +28,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
     private ClientesDAO cDao = new ClientesDAO();
     private FacturasDAO fDao = new FacturasDAO();
+    private Login login;
 
     ResultSet rs;
 
@@ -52,10 +53,12 @@ public class VistaPanda extends javax.swing.JFrame {
         ind_3 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         Logo = new javax.swing.JLabel();
+        fondoLateral = new javax.swing.JLabel();
         BarraSuperior = new javax.swing.JPanel();
         btnCerrar = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnCerrar1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         Contenedor = new javax.swing.JPanel();
         PerfilPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -151,6 +154,7 @@ public class VistaPanda extends javax.swing.JFrame {
         setUndecorated(true);
 
         MenuLateral.setBackground(new java.awt.Color(20, 20, 20));
+        MenuLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_1.setBackground(new java.awt.Color(236, 37, 32));
         btn_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -209,6 +213,8 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        MenuLateral.add(btn_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 156, 220, -1));
+
         btn_2.setBackground(new java.awt.Color(0, 0, 0));
         btn_2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -265,6 +271,8 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        MenuLateral.add(btn_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 205, 220, -1));
 
         btn_3.setBackground(new java.awt.Color(0, 0, 0));
         btn_3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -325,32 +333,13 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoPandaFood.png"))); // NOI18N
+        MenuLateral.add(btn_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 254, -1, -1));
 
-        javax.swing.GroupLayout MenuLateralLayout = new javax.swing.GroupLayout(MenuLateral);
-        MenuLateral.setLayout(MenuLateralLayout);
-        MenuLateralLayout.setHorizontalGroup(
-            MenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(MenuLateralLayout.createSequentialGroup()
-                .addGroup(MenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btn_2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        MenuLateralLayout.setVerticalGroup(
-            MenuLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLateralLayout.createSequentialGroup()
-                .addComponent(Logo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoPandaFood.png"))); // NOI18N
+        MenuLateral.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, -1));
+
+        fondoLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FondoLateral2.png"))); // NOI18N
+        MenuLateral.add(fondoLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, -7, 220, 718));
 
         BarraSuperior.setBackground(new java.awt.Color(20, 20, 20));
         BarraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -363,6 +352,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 BarraSuperiorMousePressed(evt);
             }
         });
+        BarraSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8_Expand_Arrow_32px.png"))); // NOI18N
         btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -371,12 +361,14 @@ public class VistaPanda extends javax.swing.JFrame {
                 btnCerrarMouseClicked(evt);
             }
         });
+        BarraSuperior.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(902, 11, -1, 23));
 
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
             }
         });
+        BarraSuperior.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(884, 23, -1, 20));
 
         btnCerrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8_Multiply_32px.png"))); // NOI18N
         btnCerrar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -385,31 +377,10 @@ public class VistaPanda extends javax.swing.JFrame {
                 btnCerrar1MouseClicked(evt);
             }
         });
+        BarraSuperior.add(btnCerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(944, 11, -1, 23));
 
-        javax.swing.GroupLayout BarraSuperiorLayout = new javax.swing.GroupLayout(BarraSuperior);
-        BarraSuperior.setLayout(BarraSuperiorLayout);
-        BarraSuperiorLayout.setHorizontalGroup(
-            BarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BarraSuperiorLayout.createSequentialGroup()
-                .addGap(884, 884, 884)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(btnCerrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCerrar1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        BarraSuperiorLayout.setVerticalGroup(
-            BarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BarraSuperiorLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(BarraSuperiorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(BarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FondoCabecera.png"))); // NOI18N
+        BarraSuperior.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 985, 43));
 
         Contenedor.setBackground(new java.awt.Color(255, 255, 255));
         Contenedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(20, 20, 20)));
@@ -1309,7 +1280,7 @@ public class VistaPanda extends javax.swing.JFrame {
         lblTituloCliente.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTituloCliente.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTituloCliente.setText("CONSULTAR CLIENTES");
+        lblTituloCliente.setText("GESTIONAR CLIENTES");
 
         javax.swing.GroupLayout TituloPanel2Layout = new javax.swing.GroupLayout(TituloPanel2);
         TituloPanel2.setLayout(TituloPanel2Layout);
@@ -1775,8 +1746,8 @@ public class VistaPanda extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MenuLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(Contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(BarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1952,8 +1923,9 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCambiarMouseReleased
 
     private void SignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutActionPerformed
-
-        System.exit(0);
+        login = new Login();
+        this.dispose();
+        login.setVisible(true);
     }//GEN-LAST:event_SignOutActionPerformed
 
     private void fechaIngresoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaIngresoKeyTyped
@@ -2787,6 +2759,7 @@ public class VistaPanda extends javax.swing.JFrame {
     public static javax.swing.JPanel btn_2;
     public static javax.swing.JPanel btn_3;
     public static final com.toedter.calendar.JDateChooser fechaIngreso = new com.toedter.calendar.JDateChooser();
+    private javax.swing.JLabel fondoLateral;
     public static javax.swing.JPanel ind_1;
     public static javax.swing.JPanel ind_2;
     public static javax.swing.JPanel ind_3;
@@ -2810,6 +2783,7 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel147;
     private javax.swing.JLabel jLabel148;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -2968,6 +2942,8 @@ public class VistaPanda extends javax.swing.JFrame {
                     || txfApellidosCliente.getText().trim().length() == 0 || txfIdentificacionCliente.getText().trim().equalsIgnoreCase("IDENTIFICACIÓN")
                     || txfNombreCliente.getText().trim().equalsIgnoreCase("NOMBRES") || txfApellidosCliente.getText().trim().equalsIgnoreCase("APELLIDOS")) {
                 JOptionPane.showMessageDialog(null, "Digite información en los campos obligatorios por favor.");
+            } else if (Integer.parseInt(txfPuntosCliente.getText().trim()) > 300) {
+                JOptionPane.showMessageDialog(null, "El cliente supera el limite de puntos ");
             } else if (txfCelularCliente.getText().trim().length() != 0 && !txfCelularCliente.getText().trim().equalsIgnoreCase("CELULAR") && txfCelularCliente.getText().trim().length() < 10) {
                 JOptionPane.showMessageDialog(null, "El celular que ha ingresado no es válido, verifique su información..");
             } else if (txfIdentificacionCliente.getText().length() < 8) {
