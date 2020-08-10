@@ -26,15 +26,15 @@ import javax.swing.table.TableColumnModel;
  */
 public class VistaPanda extends javax.swing.JFrame {
 
-    ConexionBD cc = new ConexionBD();
-    private ClientesDAO cDao = new ClientesDAO(cc);
-    private FacturasDAO fDao = new FacturasDAO(cc);
+    private ClientesDAO cDao = new ClientesDAO();
+    private FacturasDAO fDao = new FacturasDAO();
 
     ResultSet rs;
 
     public VistaPanda() {
         initComponents();
         this.setLocationRelativeTo(null);
+        lblLimite.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -106,7 +106,7 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel139 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
         jLabel141 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
         lblPuntosCompra = new javax.swing.JLabel();
         btnAsignar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -119,6 +119,7 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel143 = new javax.swing.JLabel();
         txfPuntos = new javax.swing.JTextField();
         txfNumFactura = new javax.swing.JTextField();
+        lblLimite = new javax.swing.JLabel();
         ConsutarCientesPanel = new javax.swing.JPanel();
         TituloPanel2 = new javax.swing.JPanel();
         lblTituloCliente = new javax.swing.JLabel();
@@ -861,10 +862,10 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel141.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel141.setText("Celular:");
 
-        jLabel3.setBackground(new java.awt.Color(236, 37, 32));
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(20, 20, 20));
-        jLabel3.setText("Puntos totales de la compra");
+        lblDescripcion.setBackground(new java.awt.Color(236, 37, 32));
+        lblDescripcion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblDescripcion.setForeground(new java.awt.Color(20, 20, 20));
+        lblDescripcion.setText("Puntos totales de la compra");
 
         lblPuntosCompra.setFont(new java.awt.Font("Tahoma", 1, 70)); // NOI18N
         lblPuntosCompra.setForeground(new java.awt.Color(236, 37, 32));
@@ -1168,34 +1169,16 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         });
 
+        lblLimite.setBackground(new java.awt.Color(236, 37, 32));
+        lblLimite.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblLimite.setForeground(new java.awt.Color(236, 37, 32));
+        lblLimite.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLimite.setText("*El cliente alcanzó el límite de puntos (300).");
+
         javax.swing.GroupLayout FacturaPanelLayout = new javax.swing.GroupLayout(FacturaPanel);
         FacturaPanel.setLayout(FacturaPanelLayout);
         FacturaPanelLayout.setHorizontalGroup(
             FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FacturaPanelLayout.createSequentialGroup()
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel136)
-                            .addComponent(txfNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addComponent(TituloPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel84)))
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPuntosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addGroup(FacturaPanelLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FacturaPanelLayout.createSequentialGroup()
                 .addGap(0, 84, Short.MAX_VALUE)
                 .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1217,6 +1200,34 @@ public class VistaPanda extends javax.swing.JFrame {
                     .addComponent(jLabel140)
                     .addComponent(txfTotalCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel136)
+                            .addComponent(txfNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addComponent(TituloPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel84)))
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addGap(334, 334, 334)
+                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPuntosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLimite))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FacturaPanelLayout.setVerticalGroup(
             FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1263,12 +1274,14 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(lblPuntosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(29, 29, 29)
+                .addComponent(lblDescripcion)
+                .addGap(3, 3, 3)
+                .addComponent(lblLimite)
+                .addGap(18, 18, 18)
                 .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         Contenedor.add(FacturaPanel, "card3");
@@ -1941,7 +1954,11 @@ public class VistaPanda extends javax.swing.JFrame {
 
     private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
         try {
-            registrarFactura();
+            if (txfIdentificacion.isEditable()) {
+                JOptionPane.showMessageDialog(null, "Busque o registre un cliente primero, por favor.");
+            } else {
+                registrarFactura();
+            }
         } catch (ParseException ex) {
         }
     }//GEN-LAST:event_btnAsignarActionPerformed
@@ -2099,20 +2116,34 @@ public class VistaPanda extends javax.swing.JFrame {
             if (txfTotalCompra.getText().trim().length() == 0) {
 
                 lblPuntosCompra.setText("0");
+                lblLimite.setVisible(false);
+
             } else {
 
                 if (total < 2000) {
 
                     lblPuntosCompra.setText("0");
+                    lblLimite.setVisible(false);
 
                 } else {
 
                     int res = 0;
+                    int aux = 0;
+
+                    if (txfPuntos.getText().trim().length() != 0) {
+                        aux = Integer.parseInt(txfPuntos.getText().trim());
+                    }
 
                     for (int i = 2000; i <= total; i += 2000) {
 
                         res += 1;
+                        aux += res;
+                        if (aux >= 300) {
+                            lblLimite.setVisible(true);
+                            break;
+                        }
                         lblPuntosCompra.setText(Integer.toString(res));
+
                     }
                 }
             }
@@ -2171,26 +2202,41 @@ public class VistaPanda extends javax.swing.JFrame {
             if (txfTotalCompra.getText().trim().length() == 0) {
 
                 lblPuntosCompra.setText("0");
+                lblLimite.setVisible(false);
+
             } else {
 
                 if (total < 2000) {
 
                     lblPuntosCompra.setText("0");
+                    lblLimite.setVisible(false);
 
                 } else {
 
                     int res = 0;
+                    int aux = 0;
+
+                    if (txfPuntos.getText().trim().length() != 0) {
+                        aux = Integer.parseInt(txfPuntos.getText().trim());
+                    }
 
                     for (int i = 2000; i <= total; i += 2000) {
 
                         res += 1;
+                        aux += res;
+                        if (aux >= 300) {
+                            lblLimite.setVisible(true);
+                            break;
+                        }
                         lblPuntosCompra.setText(Integer.toString(res));
+
                     }
                 }
             }
         } catch (NumberFormatException nfe) {
 
         }
+
     }//GEN-LAST:event_txfTotalCompraKeyReleased
 
     private void txfNumFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfNumFacturaMouseClicked
@@ -2728,7 +2774,6 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel147;
     private javax.swing.JLabel jLabel148;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -2759,7 +2804,9 @@ public class VistaPanda extends javax.swing.JFrame {
     public static javax.swing.JLabel lblApellido;
     public static javax.swing.JLabel lblCargo;
     public static javax.swing.JLabel lblCelular;
+    private javax.swing.JLabel lblDescripcion;
     public static javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lblLimite;
     public static javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumSalidas;
     private javax.swing.JLabel lblNumUsuarios;
@@ -2837,6 +2884,7 @@ public class VistaPanda extends javax.swing.JFrame {
             this.txfPuntos.setText("PUNTOS");
             this.txfTotalCompra.setText("TOTAL");
             this.lblPuntosCompra.setText("0");
+            this.lblLimite.setVisible(false);
             this.txfNumFactura.requestFocus(true);
             activarCamposFactura();
         } catch (ParseException ex) {
@@ -3114,6 +3162,12 @@ public class VistaPanda extends javax.swing.JFrame {
                 txfApellidos.setEditable(false);
                 txfCelular.setEditable(false);
                 txfPuntos.setEditable(false);
+                if (Integer.parseInt(puntos) >= 300) {
+                    lblPuntosCompra.setText("0");
+                    lblLimite.setVisible(true);
+                }
+                txfTotalCompra.requestFocus(true);
+
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró el cliente, verifique su información por favor o registre el cliente.");
             }

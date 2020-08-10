@@ -25,8 +25,7 @@ public class Main {
         }
 
         try {
-            ConexionBD cc = new ConexionBD();
-            UsuarioDAO uDao = new UsuarioDAO(cc);
+            UsuarioDAO uDao = new UsuarioDAO();
             ResultSet rs = uDao.buscar1();
 
             if (!rs.next()) {

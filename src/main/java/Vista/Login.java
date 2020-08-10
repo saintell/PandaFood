@@ -1,10 +1,8 @@
 package Vista;
 
-import DAO.ConexionBD;
 import DAO.UsuarioDAO;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
@@ -17,8 +15,7 @@ import javax.swing.JPanel;
  */
 public class Login extends javax.swing.JFrame {
 
-    ConexionBD cc = new ConexionBD();
-    private UsuarioDAO uDao = new UsuarioDAO(cc);
+    private UsuarioDAO uDao = new UsuarioDAO();
 
     private VistaPanda vistaPanda;
     private boolean estado = true;

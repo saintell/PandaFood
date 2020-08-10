@@ -1,11 +1,8 @@
 package Vista;
 
-import DAO.ConexionBD;
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
-import java.awt.Image;
 import java.sql.ResultSet;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,10 +11,8 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarGerente extends javax.swing.JFrame {
 
-    ConexionBD cc = new ConexionBD();
-    private Login login;
     private ResultSet rs;
-    private UsuarioDAO uDao = new UsuarioDAO(cc);
+    private UsuarioDAO uDao = new UsuarioDAO();
 
     public RegistrarGerente() {
 

@@ -11,12 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class FacturasDAO {
 
+    ConexionBD cc = new ConexionBD();
     Connection cn;
     String sSql = " ";
     ResultSet rs;
     Statement st;
 
-    public FacturasDAO(ConexionBD cc) {
+    public FacturasDAO() {
 
         cn = cc.conectar();
     }

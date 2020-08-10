@@ -12,14 +12,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class ClientesDAO {
 
-    
+    ConexionBD cc = new ConexionBD();
     Connection cn;
     String sSql = " ";
     ResultSet rs;
     Statement st;
     int totalregistros;
 
-    public ClientesDAO(ConexionBD cc) {
+    public ClientesDAO() {
     
         cn = cc.conectar();
     }

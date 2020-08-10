@@ -13,7 +13,7 @@ public class ConexionBD {
         try {
 
             Class.forName("org.postgresql.Driver");
-            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/PandaFood", "postgres", "Pinpo9807");
+            conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/PandaFoodBD", "postgres", "postgres");
 
         } catch (ClassNotFoundException nf) {
             JOptionPane.showMessageDialog(null, nf.getMessage());

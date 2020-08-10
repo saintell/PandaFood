@@ -10,12 +10,13 @@ import javax.swing.JOptionPane;
 
 public class UsuarioDAO {
 
+    ConexionBD cc = new ConexionBD();
     Connection cn;
     String sSql = " ";
     ResultSet rs;
     Statement st;
 
-    public UsuarioDAO(ConexionBD cc) {
+    public UsuarioDAO() {
 
         cn = cc.conectar();
     }
