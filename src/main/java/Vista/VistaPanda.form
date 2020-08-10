@@ -1214,7 +1214,11 @@
                           <Component id="txfApellidos" alignment="0" min="-2" pref="358" max="-2" attributes="0"/>
                           <Component id="txfPuntos" alignment="0" min="-2" pref="358" max="-2" attributes="0"/>
                           <Component id="jLabel143" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel137" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel137" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnBuscarClienteFacturas" min="-2" pref="27" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1288,10 +1292,13 @@
                           </Group>
                           <Component id="TituloPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel137" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel138" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel137" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel138" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btnBuscarClienteFacturas" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1723,7 +1730,7 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="PUNTOS"/>
+                <Property name="text" type="java.lang.String" value="0"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1784,6 +1791,17 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="*El cliente alcanz&#xf3; el l&#xed;mite de puntos (300)."/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBuscarClienteFacturas">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Bot&#xf3;nBuscar.png"/>
+                </Property>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarClienteFacturasActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -120,6 +120,7 @@ public class VistaPanda extends javax.swing.JFrame {
         txfPuntos = new javax.swing.JTextField();
         txfNumFactura = new javax.swing.JTextField();
         lblLimite = new javax.swing.JLabel();
+        btnBuscarClienteFacturas = new javax.swing.JButton();
         ConsutarCientesPanel = new javax.swing.JPanel();
         TituloPanel2 = new javax.swing.JPanel();
         lblTituloCliente = new javax.swing.JLabel();
@@ -1108,7 +1109,7 @@ public class VistaPanda extends javax.swing.JFrame {
         txfPuntos.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         txfPuntos.setForeground(new java.awt.Color(153, 153, 153));
         txfPuntos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfPuntos.setText("PUNTOS");
+        txfPuntos.setText("0");
         txfPuntos.setToolTipText("");
         txfPuntos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txfPuntos.setFocusable(false);
@@ -1175,6 +1176,14 @@ public class VistaPanda extends javax.swing.JFrame {
         lblLimite.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLimite.setText("*El cliente alcanzó el límite de puntos (300).");
 
+        btnBuscarClienteFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotónBuscar.png"))); // NOI18N
+        btnBuscarClienteFacturas.setFocusable(false);
+        btnBuscarClienteFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClienteFacturasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FacturaPanelLayout = new javax.swing.GroupLayout(FacturaPanel);
         FacturaPanel.setLayout(FacturaPanelLayout);
         FacturaPanelLayout.setHorizontalGroup(
@@ -1187,7 +1196,10 @@ public class VistaPanda extends javax.swing.JFrame {
                     .addComponent(txfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel143)
-                    .addComponent(jLabel137))
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel137)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarClienteFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48)
                 .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel138)
@@ -1243,10 +1255,12 @@ public class VistaPanda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txfNumFactura))
                     .addComponent(TituloPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel137)
-                    .addComponent(jLabel138))
+                .addGap(34, 34, 34)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel137)
+                        .addComponent(jLabel138))
+                    .addComponent(btnBuscarClienteFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1953,13 +1967,10 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_fechaIngresoKeyTyped
 
     private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
-        try {
-            if (txfIdentificacion.isEditable()) {
-                JOptionPane.showMessageDialog(null, "Busque o registre un cliente primero, por favor.");
-            } else {
-                registrarFactura();
-            }
-        } catch (ParseException ex) {
+        if (txfIdentificacion.isEditable()) {
+            JOptionPane.showMessageDialog(null, "Busque o registre un cliente primero, por favor.");
+        } else {
+            registrarFactura();
         }
     }//GEN-LAST:event_btnAsignarActionPerformed
 
@@ -2009,7 +2020,7 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_txfNombreMouseReleased
 
     private void txfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNombreActionPerformed
-        // TODO add your handling code here:
+        registrarClienteEnFactura();
     }//GEN-LAST:event_txfNombreActionPerformed
 
     private void txfNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreKeyPressed
@@ -2041,7 +2052,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
     private void txfApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfApellidosActionPerformed
 
-        // TODO add your handling code here:
+        registrarClienteEnFactura();
     }//GEN-LAST:event_txfApellidosActionPerformed
 
     private void txfApellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfApellidosKeyPressed
@@ -2072,7 +2083,8 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_txfCelularMouseReleased
 
     private void txfCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCelularActionPerformed
-        // TODO add your handling code here:
+
+        registrarClienteEnFactura();
     }//GEN-LAST:event_txfCelularActionPerformed
 
     private void txfCelularKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfCelularKeyPressed
@@ -2104,48 +2116,60 @@ public class VistaPanda extends javax.swing.JFrame {
     }//GEN-LAST:event_txfTotalCompraMouseReleased
 
     private void txfTotalCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfTotalCompraActionPerformed
-        // TODO add your handling code here:
+
+        if (txfIdentificacion.isEditable()) {
+            JOptionPane.showMessageDialog(null, "Busque o registre un cliente primero, por favor.");
+        } else {
+            registrarFactura();
+        }
     }//GEN-LAST:event_txfTotalCompraActionPerformed
 
     private void txfTotalCompraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfTotalCompraKeyPressed
 
         try {
 
-            int total = Integer.parseInt(txfTotalCompra.getText().trim());
+            if (Integer.parseInt(txfPuntos.getText().trim()) == 300) {
 
-            if (txfTotalCompra.getText().trim().length() == 0) {
-
-                lblPuntosCompra.setText("0");
-                lblLimite.setVisible(false);
-
+                lblLimite.setVisible(true);
             } else {
 
-                if (total < 2000) {
+                int total = Integer.parseInt(txfTotalCompra.getText().trim());
+
+                if (txfTotalCompra.getText().trim().length() == 0) {
 
                     lblPuntosCompra.setText("0");
                     lblLimite.setVisible(false);
 
                 } else {
 
-                    int res = 0;
-                    int aux = 0;
+                    if (total < 2000) {
 
-                    if (txfPuntos.getText().trim().length() != 0) {
-                        aux = Integer.parseInt(txfPuntos.getText().trim());
-                    }
+                        lblPuntosCompra.setText("0");
+                        lblLimite.setVisible(false);
 
-                    for (int i = 2000; i <= total; i += 2000) {
+                    } else {
 
-                        res += 1;
-                        aux += res;
-                        if (aux >= 300) {
-                            lblLimite.setVisible(true);
-                            break;
+                        int res = 0;
+                        int aux = Integer.parseInt(txfPuntos.getText().trim());
+
+                        for (int i = 2000; i <= total; i += 2000) {
+
+                            res += 1;
+
+                            if (aux + res >= 300) {
+
+                                lblLimite.setVisible(true);
+                                lblPuntosCompra.setText(Integer.toString(res));
+                                break;
+                            } else {
+                                lblLimite.setVisible(false);
+                            }
+                            lblPuntosCompra.setText(Integer.toString(res));
+
                         }
-                        lblPuntosCompra.setText(Integer.toString(res));
-
                     }
                 }
+
             }
         } catch (NumberFormatException nfe) {
 
@@ -2197,46 +2221,52 @@ public class VistaPanda extends javax.swing.JFrame {
 
         try {
 
-            int total = Integer.parseInt(txfTotalCompra.getText().trim());
+            if (Integer.parseInt(txfPuntos.getText().trim()) == 300) {
 
-            if (txfTotalCompra.getText().trim().length() == 0) {
-
-                lblPuntosCompra.setText("0");
-                lblLimite.setVisible(false);
-
+                lblLimite.setVisible(true);
             } else {
 
-                if (total < 2000) {
+                int total = Integer.parseInt(txfTotalCompra.getText().trim());
+
+                if (txfTotalCompra.getText().trim().length() == 0) {
 
                     lblPuntosCompra.setText("0");
                     lblLimite.setVisible(false);
 
                 } else {
 
-                    int res = 0;
-                    int aux = 0;
+                    if (total < 2000) {
 
-                    if (txfPuntos.getText().trim().length() != 0) {
-                        aux = Integer.parseInt(txfPuntos.getText().trim());
-                    }
+                        lblPuntosCompra.setText("0");
+                        lblLimite.setVisible(false);
 
-                    for (int i = 2000; i <= total; i += 2000) {
+                    } else {
 
-                        res += 1;
-                        aux += res;
-                        if (aux >= 300) {
-                            lblLimite.setVisible(true);
-                            break;
+                        int res = 0;
+                        int aux = Integer.parseInt(txfPuntos.getText().trim());
+
+                        for (int i = 2000; i <= total; i += 2000) {
+
+                            res += 1;
+
+                            if (aux + res >= 300) {
+
+                                lblLimite.setVisible(true);
+                                lblPuntosCompra.setText(Integer.toString(res));
+                                break;
+                            } else {
+                                lblLimite.setVisible(false);
+                            }
+                            lblPuntosCompra.setText(Integer.toString(res));
+
                         }
-                        lblPuntosCompra.setText(Integer.toString(res));
-
                     }
                 }
+
             }
         } catch (NumberFormatException nfe) {
 
         }
-
     }//GEN-LAST:event_txfTotalCompraKeyReleased
 
     private void txfNumFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfNumFacturaMouseClicked
@@ -2724,6 +2754,11 @@ public class VistaPanda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tablaClientesMouseClicked
 
+    private void btnBuscarClienteFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteFacturasActionPerformed
+
+        buscarClienteFactura();
+    }//GEN-LAST:event_btnBuscarClienteFacturasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraSuperior;
@@ -2739,6 +2774,7 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizarCliente;
     private javax.swing.JButton btnAsignar;
     private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnBuscarClienteFacturas;
     private javax.swing.JLabel btnCambiar;
     private javax.swing.JLabel btnCerrar;
     private javax.swing.JLabel btnCerrar1;
@@ -2881,11 +2917,11 @@ public class VistaPanda extends javax.swing.JFrame {
             this.txfNombre.setText("NOMBRES");
             this.txfApellidos.setText("APELLIDOS");
             this.txfCelular.setText("CELULAR");
-            this.txfPuntos.setText("PUNTOS");
+            this.txfPuntos.setText("0");
             this.txfTotalCompra.setText("TOTAL");
             this.lblPuntosCompra.setText("0");
             this.lblLimite.setVisible(false);
-            this.txfNumFactura.requestFocus(true);
+            this.txfIdentificacion.requestFocus(true);
             activarCamposFactura();
         } catch (ParseException ex) {
         }
@@ -2959,7 +2995,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 }
             }
         } catch (NumberFormatException nfe) {
-            System.out.println(nfe.getMessage());
+            JOptionPane.showMessageDialog(null, "Ingrese una cédula o celular válidos, por favor.");
         }
     }
 
@@ -2969,7 +3005,7 @@ public class VistaPanda extends javax.swing.JFrame {
             if (txfIdentificacion.getText().trim().length() == 0 || txfNombre.getText().trim().length() == 0
                     || txfApellidos.getText().trim().length() == 0 || txfIdentificacion.getText().trim().equalsIgnoreCase("IDENTIFICACIÓN")
                     || txfNombre.getText().trim().equalsIgnoreCase("NOMBRES") || txfApellidos.getText().trim().equalsIgnoreCase("APELLIDOS")) {
-                JOptionPane.showMessageDialog(null, "Digite información en los campos obligatorios por favor.");
+                JOptionPane.showMessageDialog(null, "Digite la información del cliente por favor.");
             } else if (txfCelular.getText().trim().length() != 0 && !txfCelular.getText().trim().equalsIgnoreCase("CELULAR") && txfCelular.getText().trim().length() < 10) {
                 JOptionPane.showMessageDialog(null, "El celular que ha ingresado no es válido, verifique su información..");
             } else if (txfIdentificacion.getText().length() < 8) {
@@ -2991,23 +3027,25 @@ public class VistaPanda extends javax.swing.JFrame {
                 if (cDao.CrearCliente(c)) {
 
                     JOptionPane.showMessageDialog(null, "Cliente registrado correctamente.");
+                    txfTotalCompra.requestFocus(true);
                     desactivarCamposFactura();
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifique que su información esté correcta.");
                 }
             }
         } catch (NumberFormatException nfe) {
-            System.out.println(nfe.getMessage());
+            JOptionPane.showMessageDialog(null, "Ingrese una cédula o celular válidos, por favor.");
+
         }
     }
 
-    public void registrarFactura() throws ParseException {
+    public void registrarFactura() {
 
         try {
             if (txfNumFactura.getText().trim().length() == 0 || txfIdentificacion.getText().trim().length() == 0 || txfNombre.getText().trim().length() == 0
                     || txfApellidos.getText().trim().length() == 0 || txfIdentificacion.getText().trim().equalsIgnoreCase("IDENTIFICACIÓN")
                     || txfNombre.getText().trim().equalsIgnoreCase("NOMBRES") || txfApellidos.getText().trim().equalsIgnoreCase("APELLIDOS")) {
-                JOptionPane.showMessageDialog(null, "Digite información en los campos obligatorios por favor.");
+                JOptionPane.showMessageDialog(null, "Llene todos los campos, por favor.");
             } else if (txfCelular.getText().trim().length() != 0 && !txfCelular.getText().trim().equalsIgnoreCase("CELULAR") && txfCelular.getText().trim().length() < 10) {
                 JOptionPane.showMessageDialog(null, "El celular que ha ingresado no es válido, verifique su información..");
             } else if (txfIdentificacion.getText().length() < 8) {
@@ -3037,7 +3075,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 }
             }
         } catch (NumberFormatException nfe) {
-            System.out.println(nfe.getMessage());
+        } catch (ParseException ex) {
         }
     }
 
