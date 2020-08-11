@@ -41,6 +41,10 @@ public class VistaPanda extends javax.swing.JFrame {
         this.btnRestarPuntos.setVisible(false);
         Image icon = new ImageIcon(getClass().getResource("/Miniatura.png")).getImage();
         super.setIconImage(icon);
+        lblNumClientes.setText(numClientes());
+        lblNumVentas.setText(numVentas());
+        lblNumVentasMes.setText(numVentasMes(mesActual()));
+        mostrarClienteConMasPuntos();
     }
 
     @SuppressWarnings("unchecked")
