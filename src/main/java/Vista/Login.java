@@ -256,6 +256,8 @@ public class Login extends javax.swing.JFrame {
         vistaPanda.Contenedor.add(vistaPanda.PerfilPanel);
         vistaPanda.Contenedor.repaint();
         vistaPanda.Contenedor.revalidate();
+
+
     }//GEN-LAST:event_signInActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

@@ -84,12 +84,12 @@ public class VistaPanda extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        lblNumUsuarios = new javax.swing.JLabel();
+        lblNumClientes = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        lblNumSalidas = new javax.swing.JLabel();
+        lblNumVentasMes = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
@@ -100,7 +100,7 @@ public class VistaPanda extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         btnCambiar = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tablaAgotados = new javax.swing.JTable();
+        tablaClientePuntos = new javax.swing.JTable();
         SignOut = new javax.swing.JButton();
         FacturaPanel = new javax.swing.JPanel();
         TituloPanel = new javax.swing.JPanel();
@@ -514,9 +514,9 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel32.setForeground(new java.awt.Color(204, 204, 204));
         jLabel32.setText("Clientes");
 
-        lblNumUsuarios.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        lblNumUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNumUsuarios.setText("0");
+        lblNumClientes.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        lblNumClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumClientes.setText("0");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -530,7 +530,7 @@ public class VistaPanda extends javax.swing.JFrame {
                         .addComponent(jLabel32)
                         .addGap(32, 32, 32))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(lblNumUsuarios)
+                        .addComponent(lblNumClientes)
                         .addGap(49, 49, 49))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -540,7 +540,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblNumUsuarios)
+                .addComponent(lblNumClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel32)
                 .addGap(20, 20, 20))
@@ -566,9 +566,9 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel34.setForeground(new java.awt.Color(204, 204, 204));
         jLabel34.setText("Ventas este Mes");
 
-        lblNumSalidas.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        lblNumSalidas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNumSalidas.setText("0");
+        lblNumVentasMes.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        lblNumVentasMes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumVentasMes.setText("0");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -579,7 +579,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(lblNumSalidas)
+                        .addComponent(lblNumVentasMes)
                         .addGap(63, 63, 63))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel34)
@@ -592,7 +592,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblNumSalidas)
+                .addComponent(lblNumVentasMes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel34)
                 .addGap(21, 21, 21))
@@ -687,7 +687,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        tablaAgotados.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientePuntos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -695,7 +695,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane5.setViewportView(tablaAgotados);
+        jScrollPane5.setViewportView(tablaClientePuntos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1810,6 +1810,10 @@ public class VistaPanda extends javax.swing.JFrame {
         Contenedor.add(PerfilPanel);
         Contenedor.repaint();
         Contenedor.revalidate();
+        lblNumClientes.setText(numClientes());
+        lblNumVentas.setText(numVentas());
+        lblNumVentasMes.setText(numVentasMes(mesActual()));
+        mostrarClienteConMasPuntos();
     }//GEN-LAST:event_btn_1MousePressed
 
     private void btn_2consultarEmpleados(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_2consultarEmpleados
@@ -2864,15 +2868,15 @@ public class VistaPanda extends javax.swing.JFrame {
     public static javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblLimite;
     public static javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblNumSalidas;
-    private javax.swing.JLabel lblNumUsuarios;
+    private javax.swing.JLabel lblNumClientes;
     private javax.swing.JLabel lblNumVentas;
+    private javax.swing.JLabel lblNumVentasMes;
     private javax.swing.JLabel lblPuntosCompra;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTituloCliente;
     private javax.swing.JLabel lblTituloFactura;
     public static javax.swing.JLabel lblUsuario;
-    private javax.swing.JTable tablaAgotados;
+    private javax.swing.JTable tablaClientePuntos;
     private javax.swing.JTable tablaClientes;
     private javax.swing.JTextField txfApellidos;
     private javax.swing.JTextField txfApellidosCliente;
@@ -3260,6 +3264,82 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
         }
+    }
+
+    public String numClientes() {
+
+        String resultado = "";
+        try {
+
+            rs = cDao.contarClientes();
+
+            if (rs.next()) {
+
+                resultado = rs.getString(1);
+            } else {
+
+                resultado = "0";
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+
+    public String numVentasMes(String mes) {
+
+        String resultado = "";
+        try {
+
+            rs = fDao.contarFacturasMes(mes);
+
+            if (rs.next()) {
+
+                resultado = rs.getString(1);
+            } else {
+
+                resultado = "0";
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+
+    public String numVentas() {
+
+        String resultado = "";
+        try {
+
+            rs = fDao.contarFacturas();
+
+            if (rs.next()) {
+
+                resultado = rs.getString(1);
+            } else {
+
+                resultado = "0";
+            }
+        } catch (SQLException ex) {
+        }
+        return resultado;
+    }
+
+    public void mostrarClienteConMasPuntos() {
+
+        try {
+
+            DefaultTableModel modelo;
+            modelo = cDao.mostrarClientesPuntos();
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tablaClientePuntos.setModel(modelo);
+            tcr.setHorizontalAlignment(SwingConstants.LEFT);
+            TableColumnModel column = tablaClientePuntos.getColumnModel();
+            column.getColumn(1).setPreferredWidth(150);
+            tablaClientePuntos.setForeground(Color.red);
+
+        } catch (Exception e) {
+
+        }
+
     }
 
 }

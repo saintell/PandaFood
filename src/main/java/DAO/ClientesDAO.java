@@ -183,4 +183,53 @@ public class ClientesDAO {
             return null;
         }
     }
+
+    public ResultSet contarClientes() throws SQLException {
+        sSql = "SELECT COUNT(cedula_cliente) FROM cliente";
+        st = cn.createStatement();
+        rs = st.executeQuery(sSql);
+        return rs;
+    }
+
+    public DefaultTableModel mostrarClientesPuntos() {
+        DefaultTableModel modelo;
+
+        String[] titulos = {"Cedula", "Nombre(s)", "Apellido(s)", "Celular", "Puntos"};
+
+        String[] registro = new String[5];
+
+        totalregistros = 0;
+        modelo = new DefaultTableModel(null, titulos) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
+
+        sSql = "SELECT * FROM cliente ORDER BY puntos DESC;";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSql);
+
+            while (rs.next()) {
+                registro[0] = rs.getString("cedula_cliente");
+                registro[1] = rs.getString("nombre");
+                registro[2] = rs.getString("apellido");
+                registro[3] = rs.getString("celular");
+                registro[4] = rs.getString("puntos");
+
+                totalregistros = totalregistros + 1;
+                modelo.addRow(registro);
+
+            }
+            return modelo;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return null;
+        }
+    }
 }

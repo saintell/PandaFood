@@ -52,7 +52,7 @@ public class FacturasDAO {
         }
 
     }
-    
+
     public ResultSet maxFactura() throws SQLException {
         sSql = "SELECT MAX(codigo_factura + 1) FROM factura";
         st = cn.createStatement();
@@ -60,4 +60,17 @@ public class FacturasDAO {
         return rs;
     }
 
+    public ResultSet contarFacturas() throws SQLException {
+        sSql = "SELECT COUNT(distinct codigo_factura) FROM factura ";
+        st = cn.createStatement();
+        rs = st.executeQuery(sSql);
+        return rs;
+    }
+    
+    public ResultSet contarFacturasMes(String mes) throws SQLException {
+        sSql = "SELECT COUNT(distinct codigo_factura) FROM factura WHERE date_part('month', fecha) = '" + mes + "' ";
+        st = cn.createStatement();
+        rs = st.executeQuery(sSql);
+        return rs;
+    }
 }
