@@ -4,6 +4,7 @@ import DAO.UsuarioDAO;
 import static Vista.VistaPanda.btn_1;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
@@ -27,8 +28,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
-//        Image icon = new ImageIcon(getClass().getResource("/Miniatura2.png")).getImage();
-//        super.setIconImage(icon);
+        Image icon = new ImageIcon(getClass().getResource("/Miniatura.png")).getImage();
+        super.setIconImage(icon);
         Font dvs = new Font("DejaVu Sans", Font.PLAIN, 18);
         txfContraseña.setFont(dvs);
         txfContraseña.setEchoChar('•');
@@ -364,10 +365,9 @@ public class Login extends javax.swing.JFrame {
                     vistaPanda = new VistaPanda();
                     vistaPanda.setVisible(true);
                     vistaPanda.lblUsuario.setText(rs.getString(1));
-                    vistaPanda.lblNombre.setText("JuanBee");
-                    vistaPanda.lblApellido.setText("");
-                    vistaPanda.lblCelular.setText("");
-                    vistaPanda.lblDireccion.setText("");
+                    vistaPanda.lblNombre.setText("Panda Food Palmira");
+                    vistaPanda.lblCelular.setText("315 4167302");
+                    vistaPanda.lblDireccion.setText("Calle 16B # 26-29");
                     vistaPanda.lblCargo.setText("Administrador");
                     dispose();
                 }
@@ -380,6 +380,10 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void asignarColor(JPanel pane) {
-        pane.setBackground(new Color(236, 37, 32));
+        try {
+            pane.setBackground(new Color(236, 37, 32));
+        } catch (NullPointerException npe) {
+
+        }
     }
 }

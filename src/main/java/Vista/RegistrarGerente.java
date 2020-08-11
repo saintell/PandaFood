@@ -2,7 +2,9 @@ package Vista;
 
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
+import java.awt.Image;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +21,8 @@ public class RegistrarGerente extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
-//        Image icon = new ImageIcon(getClass().getResource("/Miniatura2.png")).getImage();
-//        super.setIconImage(icon);
+        Image icon = new ImageIcon(getClass().getResource("/Miniatura.png")).getImage();
+        super.setIconImage(icon);
 
     }
 
@@ -218,12 +220,12 @@ public class RegistrarGerente extends javax.swing.JFrame {
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txfContraseña1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(signIn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExit))
-                            .addComponent(txfContraseña1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnExit)))))
                 .addGap(73, 73, 73))
         );
         jPanel1Layout.setVerticalGroup(
@@ -245,7 +247,7 @@ public class RegistrarGerente extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(3, 3, 3)
                 .addComponent(txfContraseña1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(signIn)
                     .addComponent(btnExit))

@@ -52,5 +52,12 @@ public class FacturasDAO {
         }
 
     }
+    
+    public ResultSet maxFactura() throws SQLException {
+        sSql = "SELECT MAX(codigo_factura + 1) FROM factura";
+        st = cn.createStatement();
+        rs = st.executeQuery(sSql);
+        return rs;
+    }
 
 }

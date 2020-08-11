@@ -6,6 +6,7 @@ import DAO.FacturasDAO;
 import Modelo.Cliente;
 import Modelo.Factura;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -35,7 +37,10 @@ public class VistaPanda extends javax.swing.JFrame {
     public VistaPanda() {
         initComponents();
         this.setLocationRelativeTo(null);
-        lblLimite.setVisible(false);
+        this.lblLimite.setVisible(false);
+        this.btnRestarPuntos.setVisible(false);
+        Image icon = new ImageIcon(getClass().getResource("/Miniatura.png")).getImage();
+        super.setIconImage(icon);
     }
 
     @SuppressWarnings("unchecked")
@@ -62,13 +67,11 @@ public class VistaPanda extends javax.swing.JFrame {
         Contenedor = new javax.swing.JPanel();
         PerfilPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        lblApellido = new javax.swing.JLabel();
         lblCelular = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblDireccion = new javax.swing.JLabel();
@@ -149,6 +152,7 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         btnActualizarCliente = new javax.swing.JButton();
+        btnRestarPuntos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -392,9 +396,6 @@ public class VistaPanda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel4.setText("Apellido: ");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel5.setText("Celular:");
 
@@ -409,9 +410,6 @@ public class VistaPanda extends javax.swing.JFrame {
 
         lblUsuario.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lblUsuario.setText("Usuario");
-
-        lblApellido.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        lblApellido.setText("Apellido");
 
         lblCelular.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lblCelular.setText("Celular");
@@ -449,7 +447,10 @@ public class VistaPanda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
+                        .addGap(241, 241, 241)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(lblUsuario))
@@ -459,23 +460,16 @@ public class VistaPanda extends javax.swing.JFrame {
                             .addComponent(lblNombre))
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblApellido)
-                            .addComponent(jLabel4))
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(lblCelular))
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDireccion)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel12)
+                            .addComponent(lblDireccion))
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(lblCargo)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblCargo))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -487,7 +481,6 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel12)
                     .addComponent(jLabel6))
@@ -495,7 +488,6 @@ public class VistaPanda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario)
                     .addComponent(lblNombre)
-                    .addComponent(lblApellido)
                     .addComponent(lblCelular)
                     .addComponent(lblDireccion)
                     .addComponent(lblCargo))
@@ -624,7 +616,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel38.setText("Ventas este Mes");
+        jLabel38.setText("Total de Ventas");
 
         lblNumVentas.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         lblNumVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -757,7 +749,7 @@ public class VistaPanda extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PerfilPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(SignOut)
@@ -1114,6 +1106,7 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         });
 
+        txfNumFactura.setEditable(false);
         txfNumFactura.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         txfNumFactura.setForeground(new java.awt.Color(153, 153, 153));
         txfNumFactura.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1148,6 +1141,7 @@ public class VistaPanda extends javax.swing.JFrame {
         lblLimite.setText("*El cliente alcanzó el límite de puntos (300).");
 
         btnBuscarClienteFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotónBuscar.png"))); // NOI18N
+        btnBuscarClienteFacturas.setContentAreaFilled(false);
         btnBuscarClienteFacturas.setFocusable(false);
         btnBuscarClienteFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1550,6 +1544,8 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel148.setText("Buscar:");
 
         btnBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotónBuscar.png"))); // NOI18N
+        btnBuscarCliente.setContentAreaFilled(false);
+        btnBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarCliente.setFocusable(false);
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1626,6 +1622,17 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         });
 
+        btnRestarPuntos.setBackground(new java.awt.Color(255, 255, 255));
+        btnRestarPuntos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menos.png"))); // NOI18N
+        btnRestarPuntos.setContentAreaFilled(false);
+        btnRestarPuntos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRestarPuntos.setFocusable(false);
+        btnRestarPuntos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestarPuntosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ConsutarCientesPanelLayout = new javax.swing.GroupLayout(ConsutarCientesPanel);
         ConsutarCientesPanel.setLayout(ConsutarCientesPanelLayout);
         ConsutarCientesPanelLayout.setHorizontalGroup(
@@ -1649,7 +1656,10 @@ public class VistaPanda extends javax.swing.JFrame {
                             .addComponent(jLabel146))
                         .addGap(35, 35, 35)
                         .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel147)
+                            .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel147)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRestarPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
                                 .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txfPuntosCliente, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1671,7 +1681,7 @@ public class VistaPanda extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsutarCientesPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1711,14 +1721,16 @@ public class VistaPanda extends javax.swing.JFrame {
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txfApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
                 .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
                         .addComponent(jLabel146)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel147)
+                        .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRestarPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txfPuntosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1734,7 +1746,7 @@ public class VistaPanda extends javax.swing.JFrame {
                         .addComponent(btnEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLimpiarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnActualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         Contenedor.add(ConsutarCientesPanel, "card4");
@@ -1773,6 +1785,7 @@ public class VistaPanda extends javax.swing.JFrame {
         Contenedor.add(PerfilPanel);
         Contenedor.repaint();
         Contenedor.revalidate();
+
     }//GEN-LAST:event_btn_1MouseClicked
 
     private void btn_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_1MouseEntered
@@ -1812,6 +1825,7 @@ public class VistaPanda extends javax.swing.JFrame {
             fechaIngreso.setDate(fechaParseada);
             Contenedor.repaint();
             Contenedor.revalidate();
+            MAXFactura();
         } catch (ParseException ex) {
         }
     }//GEN-LAST:event_btn_2consultarEmpleados
@@ -1842,6 +1856,7 @@ public class VistaPanda extends javax.swing.JFrame {
             fechaIngreso.setDate(fechaParseada);
             Contenedor.repaint();
             Contenedor.revalidate();
+            MAXFactura();
         } catch (ParseException ex) {
         }
     }//GEN-LAST:event_btn_2MousePressed
@@ -2723,6 +2738,7 @@ public class VistaPanda extends javax.swing.JFrame {
             buscarCliente(cedula);
             txfIdentificacionCliente.setText(cedula);
             txfIdentificacionCliente.setEditable(false);
+            btnRestarPuntos.setVisible(true);
         }
     }//GEN-LAST:event_tablaClientesMouseClicked
 
@@ -2730,6 +2746,37 @@ public class VistaPanda extends javax.swing.JFrame {
 
         buscarClienteFactura();
     }//GEN-LAST:event_btnBuscarClienteFacturasActionPerformed
+
+    private void btnRestarPuntosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestarPuntosActionPerformed
+
+        try {
+
+            int puntos_restar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de puntos que va a restar."));
+            int puntos_totales = 0;
+
+            if (puntos_restar <= 0 || puntos_restar > 300) {
+                JOptionPane.showMessageDialog(null, "El número de puntos a restar debe estar en el rango entre 1 y 300.");
+            } else if (puntos_restar > Integer.parseInt(txfPuntosCliente.getText().trim())) {
+                JOptionPane.showMessageDialog(null, "El número de puntos a restar no debe superar al número de puntos del cliente.");
+            } else {
+
+                if (cDao.restarPuntos(txfIdentificacionCliente.getText(), puntos_restar)) {
+
+                    puntos_totales = Integer.parseInt(txfPuntosCliente.getText().trim()) - puntos_restar;
+                    JOptionPane.showMessageDialog(null, "Se han restado " + puntos_restar + " puntos exitosamente.");
+                    txfPuntosCliente.setText(Integer.toString(puntos_totales));
+                    limpiarTablaClientes();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error y no se han restado los puntos, se recomienda contactar a los desarrolladores.");
+                }
+
+            }
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Ingrese solo números por favor.");
+        } catch (NullPointerException npe) {
+
+        }
+    }//GEN-LAST:event_btnRestarPuntosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2755,6 +2802,7 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiarCliente;
     private javax.swing.JButton btnLimpiarProveedor3;
     private javax.swing.JButton btnRegistrarCliente;
+    private javax.swing.JButton btnRestarPuntos;
     public static javax.swing.JPanel btn_1;
     public static javax.swing.JPanel btn_2;
     public static javax.swing.JPanel btn_3;
@@ -2790,7 +2838,6 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
@@ -2811,7 +2858,6 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
-    public static javax.swing.JLabel lblApellido;
     public static javax.swing.JLabel lblCargo;
     public static javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblDescripcion;
@@ -2858,6 +2904,27 @@ public class VistaPanda extends javax.swing.JFrame {
 
     }
 
+    public void MAXFactura() {
+
+        try {
+            rs = fDao.maxFactura();
+
+            if (rs.next()) {
+
+                if (rs.getString(1).equalsIgnoreCase(null)) {
+                    txfNumFactura.setText("0");
+                } else {
+                    txfNumFactura.setText(rs.getString(1));
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ha ocurrido un error, contacte a los desarrolladores.");
+            }
+        } catch (SQLException ex) {
+        } catch (NullPointerException npe) {
+            txfNumFactura.setText("0");
+        }
+    }
+
     public void limpiarTablaClientes() {
         DefaultTableModel modelo = (DefaultTableModel) tablaClientes.getModel();
         while (modelo.getRowCount() > 0) {
@@ -2897,6 +2964,7 @@ public class VistaPanda extends javax.swing.JFrame {
             this.lblLimite.setVisible(false);
             this.txfIdentificacion.requestFocus(true);
             activarCamposFactura();
+            MAXFactura();
         } catch (ParseException ex) {
         }
     }
@@ -2914,6 +2982,7 @@ public class VistaPanda extends javax.swing.JFrame {
         this.btnEditarCliente.setEnabled(true);
         this.btnActualizarCliente.setEnabled(false);
         limpiarTablaClientes();
+        this.btnRestarPuntos.setVisible(false);
     }
 
     public void activarCamposCliente() {
@@ -2943,7 +3012,7 @@ public class VistaPanda extends javax.swing.JFrame {
                     || txfNombreCliente.getText().trim().equalsIgnoreCase("NOMBRES") || txfApellidosCliente.getText().trim().equalsIgnoreCase("APELLIDOS")) {
                 JOptionPane.showMessageDialog(null, "Digite información en los campos obligatorios por favor.");
             } else if (Integer.parseInt(txfPuntosCliente.getText().trim()) > 300) {
-                JOptionPane.showMessageDialog(null, "El cliente supera el limite de puntos ");
+                JOptionPane.showMessageDialog(null, "El cliente supera el limite de puntos, ingrese un valor menor a 300.");
             } else if (txfCelularCliente.getText().trim().length() != 0 && !txfCelularCliente.getText().trim().equalsIgnoreCase("CELULAR") && txfCelularCliente.getText().trim().length() < 10) {
                 JOptionPane.showMessageDialog(null, "El celular que ha ingresado no es válido, verifique su información..");
             } else if (txfIdentificacionCliente.getText().length() < 8) {
@@ -3042,6 +3111,7 @@ public class VistaPanda extends javax.swing.JFrame {
                     if (cDao.acumularPuntos(Integer.toString(cedula), lblPuntosCompra.getText())) {
                         JOptionPane.showMessageDialog(null, "Factura registrada correctamente.");
                         limpiarFactura();
+                        MAXFactura();
                     } else {
                         JOptionPane.showMessageDialog(null, "No se han acumulado los puntos edita al cliente para asignarlos");
                     }
@@ -3073,6 +3143,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 }
                 txfPuntosCliente.setText(rs.getString("puntos"));
                 desactivarCamposCliente();
+                btnRestarPuntos.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró el cliente, proceda a registrarlo por favor.");
             }
@@ -3124,6 +3195,8 @@ public class VistaPanda extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(null, "Información del cliente actualizada correctamente.");
                     limpiarCliente();
+                    limpiarTablaClientes();
+                    btnRestarPuntos.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error, verifique que su información esté correcta.");
                 }

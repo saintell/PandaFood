@@ -9,7 +9,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ClientesDAO {
 
     ConexionBD cc = new ConexionBD();
@@ -20,11 +19,9 @@ public class ClientesDAO {
     int totalregistros;
 
     public ClientesDAO() {
-    
+
         cn = cc.conectar();
     }
-    
-    
 
     public boolean CrearCliente(Cliente c) {
 
@@ -86,7 +83,29 @@ public class ClientesDAO {
             return false;
         }
     }
-    public boolean acumularPuntos(String cedula , String puntos) {
+
+    public boolean restarPuntos(String cedula, int puntos) {
+
+        sSql = "UPDATE cliente SET puntos = puntos - '" + puntos + "' WHERE cedula_cliente = '" + cedula + "'";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSql);
+
+            int i = pst.executeUpdate();
+
+            if (i != 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean acumularPuntos(String cedula, String puntos) {
 
         sSql = "UPDATE cliente SET  puntos = puntos + '" + puntos + "' WHERE cedula_cliente = '" + cedula + "'";
 
@@ -106,7 +125,7 @@ public class ClientesDAO {
             return false;
         }
     }
-    
+
     public DefaultTableModel listar(String busca) {
 
         DefaultTableModel modelo;
