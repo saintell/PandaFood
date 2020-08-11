@@ -62,6 +62,7 @@ public class VistaPanda extends javax.swing.JFrame {
         ind_3 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         Logo = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         fondoLateral = new javax.swing.JLabel();
         BarraSuperior = new javax.swing.JPanel();
         btnCerrar = new javax.swing.JLabel();
@@ -350,6 +351,11 @@ public class VistaPanda extends javax.swing.JFrame {
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoPandaFood.png"))); // NOI18N
         MenuLateral.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel4.setText("Made By {Bucle}");
+        MenuLateral.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 680, 130, 31));
 
         fondoLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FondoLateral2.png"))); // NOI18N
         MenuLateral.add(fondoLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, -7, 220, 718));
@@ -2864,6 +2870,7 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
