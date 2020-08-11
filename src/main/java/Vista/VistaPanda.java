@@ -160,6 +160,11 @@ public class VistaPanda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         MenuLateral.setBackground(new java.awt.Color(20, 20, 20));
         MenuLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -399,6 +404,11 @@ public class VistaPanda extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel5.setText("Celular:");
@@ -2786,6 +2796,14 @@ public class VistaPanda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRestarPuntosActionPerformed
 
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraSuperior;
@@ -3338,7 +3356,7 @@ public class VistaPanda extends javax.swing.JFrame {
             tcr.setHorizontalAlignment(SwingConstants.LEFT);
             TableColumnModel column = tablaClientePuntos.getColumnModel();
             column.getColumn(1).setPreferredWidth(150);
-            tablaClientePuntos.setForeground(Color.red);
+            tablaClientePuntos.setForeground(Color.black);
 
         } catch (Exception e) {
 
