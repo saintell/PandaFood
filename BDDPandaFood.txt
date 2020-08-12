@@ -4,7 +4,7 @@ DROP TABLE cliente cascade;
 
 CREATE TABLE usuario (nombre_usuario varchar(20) not null PRIMARY KEY, contraseña varchar(20) not null);
 
-CREATE TABLE cliente (cedula_cliente int not null PRIMARY KEY, nombre varchar(20) not null, apellido varchar(20) not null, celular bigint, puntos bigint not null);
+CREATE TABLE cliente (cedula_cliente int not null PRIMARY KEY, nombre varchar(20) not null, apellido varchar(20) not null, celular bigint, puntos bigint not null,fecha_nacimiento date);
 
 CREATE TABLE factura (codigo_factura int not null PRIMARY KEY, fecha date not null,precio_total int not null,cedula_cliente int not null,FOREIGN KEY (cedula_cliente) REFERENCES cliente (cedula_cliente));
 

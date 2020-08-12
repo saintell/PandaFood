@@ -2,6 +2,7 @@ package DAO;
 
 import Modelo.Cliente;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,8 +26,8 @@ public class ClientesDAO {
 
     public boolean CrearCliente(Cliente c) {
 
-        sSql = "INSERT INTO cliente(cedula_cliente, nombre, apellido, celular, puntos)"
-                + " values (?, ?, ?, ?, ?)";
+        sSql = "INSERT INTO cliente(cedula_cliente, nombre, apellido, celular, puntos,fecha_nacimiento)"
+                + " values (?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pst = cn.prepareStatement(sSql);
@@ -36,6 +37,7 @@ public class ClientesDAO {
             pst.setString(3, c.getApellido());
             pst.setLong(4, c.getCelular());
             pst.setInt(5, c.getPuntos());
+            pst.setDate(5, c.getFecha_nacimiento());
 
             int n = pst.executeUpdate();
 
@@ -62,9 +64,9 @@ public class ClientesDAO {
         return rs;
     }
 
-    public boolean actualizar(String cedula, String nombre, String apellido, String celular, String puntos) {
+    public boolean actualizar(String cedula, String nombre, String apellido, String celular, String puntos, Date fecha_nacimiento) {
 
-        sSql = "UPDATE cliente SET nombre = '" + nombre + "', apellido = '" + apellido + "'"
+        sSql = "UPDATE cliente SET nombre = '" + nombre + "', fecha_nacimiento = '" + fecha_nacimiento + "'" + "', apellido = '" + apellido + "'"
                 + ", celular = '" + celular + "', puntos = '" + puntos + "' WHERE cedula_cliente = '" + cedula + "'";
 
         try {
@@ -129,8 +131,8 @@ public class ClientesDAO {
     public DefaultTableModel listar(String busca) {
 
         DefaultTableModel modelo;
-        String[] titulos = {"Cédula", "Nombre", "Celular", "Puntos Acumulados"};
-        String registro[] = new String[4];
+        String[] titulos = {"Cédula", "Nombre", "Celular", "Puntos Acumulados,Fecha de Nacimiento"};
+        String registro[] = new String[5];
         modelo = new DefaultTableModel(null, titulos) {
 
             @Override
@@ -162,6 +164,7 @@ public class ClientesDAO {
                 registro[1] = rs.getString("nombre") + " " + rs.getString("apellido");
                 registro[2] = rs.getString("celular");
                 registro[3] = rs.getString("puntos");
+                registro[4] = rs.getDate("fecha_nacimiento").toString();
 
                 modelo.addRow(registro);
 
@@ -172,6 +175,7 @@ public class ClientesDAO {
                 registro[1] = "Sin resultados...";
                 registro[2] = "Sin resultados...";
                 registro[3] = "Sin resultados...";
+                registro[4] = "Sin resultados...";
                 modelo.addRow(registro);
 
             }
@@ -179,7 +183,7 @@ public class ClientesDAO {
             return modelo;
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage() + "JUM");
+            JOptionPane.showMessageDialog(null, ex.getMessage() + "Ha ocurrido un problema");
             return null;
         }
     }
@@ -194,9 +198,9 @@ public class ClientesDAO {
     public DefaultTableModel mostrarClientesPuntos() {
         DefaultTableModel modelo;
 
-        String[] titulos = {"Cedula", "Nombre(s)", "Apellido(s)", "Celular", "Puntos"};
+        String[] titulos = {"Cedula", "Nombre(s)", "Apellido(s)", "Celular", "Puntos", "Fecha de Nacimiento"};
 
-        String[] registro = new String[5];
+        String[] registro = new String[6];
 
         totalregistros = 0;
         modelo = new DefaultTableModel(null, titulos) {
@@ -220,6 +224,7 @@ public class ClientesDAO {
                 registro[2] = rs.getString("apellido");
                 registro[3] = rs.getString("celular");
                 registro[4] = rs.getString("puntos");
+                registro[5] = rs.getDate("fecha_nacimiento").toString();
 
                 totalregistros = totalregistros + 1;
                 modelo.addRow(registro);

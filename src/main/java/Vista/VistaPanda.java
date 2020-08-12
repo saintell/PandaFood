@@ -158,6 +158,7 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         btnActualizarCliente = new javax.swing.JButton();
         btnRestarPuntos = new javax.swing.JButton();
+        jLabel85 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -263,7 +264,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setText("Asignar Factura");
+        jLabel40.setText("Asignar Ventas");
 
         javax.swing.GroupLayout btn_2Layout = new javax.swing.GroupLayout(btn_2);
         btn_2.setLayout(btn_2Layout);
@@ -803,7 +804,7 @@ public class VistaPanda extends javax.swing.JFrame {
         lblTituloFactura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTituloFactura.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloFactura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTituloFactura.setText("ASIGNAR FACTURA");
+        lblTituloFactura.setText("ASIGNAR Ventas");
 
         javax.swing.GroupLayout TituloPanelLayout = new javax.swing.GroupLayout(TituloPanel);
         TituloPanel.setLayout(TituloPanelLayout);
@@ -1162,6 +1163,7 @@ public class VistaPanda extends javax.swing.JFrame {
 
         btnBuscarClienteFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BotónBuscar.png"))); // NOI18N
         btnBuscarClienteFacturas.setContentAreaFilled(false);
+        btnBuscarClienteFacturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarClienteFacturas.setFocusable(false);
         btnBuscarClienteFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1653,6 +1655,18 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         });
 
+        jLabel85.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel85.setText("Fecha de Nacimiento:");
+
+        fecha_Nacimiento.setForeground(new java.awt.Color(153, 153, 153));
+        fecha_Nacimiento.setDateFormatString("dd-MM-yyyy");
+        fecha_Nacimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fecha_Nacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fecha_NacimientoKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout ConsutarCientesPanelLayout = new javax.swing.GroupLayout(ConsutarCientesPanel);
         ConsutarCientesPanel.setLayout(ConsutarCientesPanelLayout);
         ConsutarCientesPanelLayout.setHorizontalGroup(
@@ -1688,18 +1702,17 @@ public class VistaPanda extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel9))
                                     .addComponent(txfNombreCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
-                                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
-                                                .addComponent(jLabel145)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel10))
-                                            .addComponent(txfApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel145)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jLabel10))
+                                    .addComponent(txfApellidosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(jLabel85)
+                                    .addComponent(fecha_Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsutarCientesPanelLayout.createSequentialGroup()
@@ -1742,18 +1755,22 @@ public class VistaPanda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txfApellidosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14)
-                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel146)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
-                        .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRestarPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txfPuntosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel146)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txfCelularCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
+                            .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRestarPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txfPuntosCliente)
+                                .addComponent(fecha_Nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel85))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel148)
                 .addGap(8, 8, 8)
@@ -2810,6 +2827,15 @@ public class VistaPanda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formMouseClicked
 
+    private void fecha_NacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fecha_NacimientoKeyTyped
+        char c = evt.getKeyChar();
+
+        if (Character.isAlphabetic(c) || Character.isSpaceChar(c)) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_fecha_NacimientoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraSuperior;
@@ -2839,6 +2865,7 @@ public class VistaPanda extends javax.swing.JFrame {
     public static javax.swing.JPanel btn_2;
     public static javax.swing.JPanel btn_3;
     public static final com.toedter.calendar.JDateChooser fechaIngreso = new com.toedter.calendar.JDateChooser();
+    public static final com.toedter.calendar.JDateChooser fecha_Nacimiento = new com.toedter.calendar.JDateChooser();
     private javax.swing.JLabel fondoLateral;
     public static javax.swing.JPanel ind_1;
     public static javax.swing.JPanel ind_2;
@@ -2878,6 +2905,7 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -3054,7 +3082,12 @@ public class VistaPanda extends javax.swing.JFrame {
                 int cedula = Integer.parseInt(txfIdentificacionCliente.getText());
                 String nombre = txfNombreCliente.getText().trim();
                 String apellido = txfApellidosCliente.getText().trim();
+                java.sql.Date fecha_nacimiento = null;
+                SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                fecha_nacimiento = new java.sql.Date(sdf.parse(fechaSalida()).getTime());
+
                 long celular = 0;
+
                 if (txfCelularCliente.getText().trim().length() != 0 && !txfCelularCliente.getText().trim().equalsIgnoreCase("CELULAR")) {
                     celular = Long.parseLong(txfCelularCliente.getText());
                 }
@@ -3062,7 +3095,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 if (txfPuntosCliente.getText().trim().length() != 0 && !txfPuntosCliente.getText().trim().equalsIgnoreCase("PUNTOS")) {
                     puntos = Integer.parseInt(txfPuntosCliente.getText());
                 }
-                Cliente c = new Cliente(cedula, nombre, apellido, celular, puntos);
+                Cliente c = new Cliente(cedula, nombre, apellido, celular, puntos, fecha_nacimiento);
 
                 if (cDao.CrearCliente(c)) {
 
@@ -3074,6 +3107,7 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Ingrese una cédula o celular válidos, por favor.");
+        } catch (ParseException ex) {
         }
     }
 
@@ -3092,6 +3126,9 @@ public class VistaPanda extends javax.swing.JFrame {
                 int cedula = Integer.parseInt(txfIdentificacion.getText());
                 String nombre = txfNombre.getText().trim();
                 String apellido = txfApellidos.getText().trim();
+                java.sql.Date fecha_nacimiento = null;
+                SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                fecha_nacimiento = new java.sql.Date(sdf.parse(fechaSalida()).getTime());
                 long celular = 0;
                 if (txfCelular.getText().trim().length() != 0 && !txfCelular.getText().trim().equalsIgnoreCase("CELULAR")) {
                     celular = Long.parseLong(txfCelular.getText());
@@ -3100,7 +3137,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 if (txfPuntos.getText().trim().length() != 0 && !txfPuntos.getText().trim().equalsIgnoreCase("PUNTOS")) {
                     puntos = Integer.parseInt(txfPuntos.getText());
                 }
-                Cliente c = new Cliente(cedula, nombre, apellido, celular, puntos);
+                Cliente c = new Cliente(cedula, nombre, apellido, celular, puntos, fecha_nacimiento);
 
                 if (cDao.CrearCliente(c)) {
 
@@ -3114,6 +3151,7 @@ public class VistaPanda extends javax.swing.JFrame {
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Ingrese una cédula o celular válidos, por favor.");
 
+        } catch (ParseException ex) {
         }
     }
 
@@ -3216,6 +3254,9 @@ public class VistaPanda extends javax.swing.JFrame {
                 String nombre = txfNombreCliente.getText().trim();
                 String apellido = txfApellidosCliente.getText().trim();
                 String celular = "0";
+                java.sql.Date fecha_nacimiento = null;
+                SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                fecha_nacimiento = new java.sql.Date(sdf.parse(fechaSalida()).getTime());
                 if (txfCelularCliente.getText().trim().length() != 0 && !txfCelularCliente.getText().trim().equalsIgnoreCase("CELULAR")) {
                     celular = txfCelularCliente.getText();
                 }
@@ -3224,7 +3265,7 @@ public class VistaPanda extends javax.swing.JFrame {
                     puntos = txfPuntosCliente.getText();
                 }
 
-                if (cDao.actualizar(cedula, nombre, apellido, celular, puntos)) {
+                if (cDao.actualizar(cedula, nombre, apellido, celular, puntos, fecha_nacimiento)) {
 
                     JOptionPane.showMessageDialog(null, "Información del cliente actualizada correctamente.");
                     limpiarCliente();
@@ -3236,6 +3277,7 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         } catch (NumberFormatException nfe) {
 
+        } catch (ParseException ex) {
         }
     }
 
