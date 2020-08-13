@@ -132,6 +132,7 @@ public class VistaPanda extends javax.swing.JFrame {
         txfNumFactura = new javax.swing.JTextField();
         lblLimite = new javax.swing.JLabel();
         btnBuscarClienteFacturas = new javax.swing.JButton();
+        jLabel86 = new javax.swing.JLabel();
         ConsutarCientesPanel = new javax.swing.JPanel();
         TituloPanel2 = new javax.swing.JPanel();
         lblTituloCliente = new javax.swing.JLabel();
@@ -804,7 +805,7 @@ public class VistaPanda extends javax.swing.JFrame {
         lblTituloFactura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTituloFactura.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloFactura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTituloFactura.setText("ASIGNAR Ventas");
+        lblTituloFactura.setText("ASIGNAR VENTAS");
 
         javax.swing.GroupLayout TituloPanelLayout = new javax.swing.GroupLayout(TituloPanel);
         TituloPanel.setLayout(TituloPanelLayout);
@@ -823,12 +824,12 @@ public class VistaPanda extends javax.swing.JFrame {
         jLabel137.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel137.setText("Identificación del Cliente:");
 
-        fechaIngreso.setForeground(new java.awt.Color(153, 153, 153));
-        fechaIngreso.setDateFormatString("dd-MM-yyyy");
-        fechaIngreso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        fechaIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
+        fechaFactura.setForeground(new java.awt.Color(153, 153, 153));
+        fechaFactura.setDateFormatString("dd-MM-yyyy");
+        fechaFactura.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fechaFactura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fechaIngresoKeyTyped(evt);
+                fechaFacturaKeyTyped(evt);
             }
         });
 
@@ -1171,118 +1172,152 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         });
 
+        fecha_NacimientoFactura.setForeground(new java.awt.Color(153, 153, 153));
+        fecha_NacimientoFactura.setDateFormatString("dd-MM-yyyy");
+        fecha_NacimientoFactura.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fecha_NacimientoFactura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fecha_NacimientoFacturaKeyTyped(evt);
+            }
+        });
+
+        jLabel86.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel86.setText("Fecha de Nacimiento:");
+
         javax.swing.GroupLayout FacturaPanelLayout = new javax.swing.GroupLayout(FacturaPanel);
         FacturaPanel.setLayout(FacturaPanelLayout);
         FacturaPanelLayout.setHorizontalGroup(
             FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FacturaPanelLayout.createSequentialGroup()
-                .addGap(0, 84, Short.MAX_VALUE)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txfIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel139)
-                    .addComponent(txfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel143)
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel137)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscarClienteFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel138)
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addComponent(txfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiarProveedor3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel141)
-                    .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel140)
-                    .addComponent(txfTotalCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
             .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel136)
+                    .addComponent(txfNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(TituloPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel84)
+                    .addComponent(fechaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel137)
+                .addGap(4, 4, 4)
+                .addComponent(btnBuscarClienteFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(196, 196, 196)
+                .addComponent(jLabel138))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(txfIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel139)
+                .addGap(335, 335, 335)
+                .addComponent(jLabel141))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(txfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(txfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel86)
+                .addGap(254, 254, 254)
+                .addComponent(jLabel143))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(fecha_NacimientoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(txfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(btnLimpiarProveedor3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel140)
+                    .addComponent(txfTotalCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPuntosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel136)
-                            .addComponent(txfNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addComponent(TituloPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel84)))
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(FacturaPanelLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addGap(334, 334, 334)
-                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPuntosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLimite))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
+                        .addComponent(lblDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(334, 334, 334)
+                .addComponent(lblLimite))
+            .addGroup(FacturaPanelLayout.createSequentialGroup()
+                .addGap(370, 370, 370)
+                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         FacturaPanelLayout.setVerticalGroup(
             FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FacturaPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel84)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FacturaPanelLayout.createSequentialGroup()
                         .addComponent(jLabel136)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txfNumFactura))
-                    .addComponent(TituloPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addComponent(txfNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(TituloPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel84)
+                        .addGap(6, 6, 6)
+                        .addComponent(fechaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel137)
-                        .addComponent(jLabel138))
-                    .addComponent(btnBuscarClienteFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarClienteFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel137)
+                            .addComponent(jLabel138))))
                 .addGap(8, 8, 8)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txfIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel139)
                     .addComponent(jLabel141))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnLimpiarProveedor3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(6, 6, 6)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txfApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel86)
+                    .addComponent(jLabel143))
+                .addGap(1, 1, 1)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLimpiarProveedor3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fecha_NacimientoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(26, 26, 26)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FacturaPanelLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addComponent(jLabel140)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(txfTotalCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FacturaPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel143)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txfPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(lblPuntosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblDescripcion)
+                        .addComponent(lblPuntosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblDescripcion)))
                 .addGap(3, 3, 3)
                 .addComponent(lblLimite)
-                .addGap(18, 18, 18)
-                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(32, 32, 32)
+                .addGroup(FacturaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         Contenedor.add(FacturaPanel, "card3");
@@ -1702,9 +1737,7 @@ public class VistaPanda extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel9))
                                     .addComponent(txfNombreCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
+                                .addGap(58, 58, 58)
                                 .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(ConsutarCientesPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel145)
@@ -1712,9 +1745,11 @@ public class VistaPanda extends javax.swing.JFrame {
                                         .addComponent(jLabel10))
                                     .addComponent(txfApellidosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                                     .addComponent(jLabel85)
-                                    .addComponent(fecha_Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(fecha_Nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsutarCientesPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ConsutarCientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1800,14 +1835,11 @@ public class VistaPanda extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(MenuLateral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(MenuLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(BarraSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(BarraSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -1863,7 +1895,7 @@ public class VistaPanda extends javax.swing.JFrame {
             Contenedor.add(FacturaPanel);
             txfNumFactura.requestFocus(true);
             java.util.Date fechaParseada = new SimpleDateFormat("dd/MM/yyyy").parse(fechaActual());
-            fechaIngreso.setDate(fechaParseada);
+            fechaFactura.setDate(fechaParseada);
             Contenedor.repaint();
             Contenedor.revalidate();
             MAXFactura();
@@ -1894,7 +1926,7 @@ public class VistaPanda extends javax.swing.JFrame {
             Contenedor.add(FacturaPanel);
             txfNumFactura.requestFocus(true);
             java.util.Date fechaParseada = new SimpleDateFormat("dd/MM/yyyy").parse(fechaActual());
-            fechaIngreso.setDate(fechaParseada);
+            fechaFactura.setDate(fechaParseada);
             Contenedor.repaint();
             Contenedor.revalidate();
             MAXFactura();
@@ -1984,7 +2016,7 @@ public class VistaPanda extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_SignOutActionPerformed
 
-    private void fechaIngresoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaIngresoKeyTyped
+    private void fechaFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaFacturaKeyTyped
 
         char c = evt.getKeyChar();
 
@@ -1992,7 +2024,7 @@ public class VistaPanda extends javax.swing.JFrame {
             evt.consume();
         }
 
-    }//GEN-LAST:event_fechaIngresoKeyTyped
+    }//GEN-LAST:event_fechaFacturaKeyTyped
 
     private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
         if (txfIdentificacion.isEditable()) {
@@ -2836,6 +2868,10 @@ public class VistaPanda extends javax.swing.JFrame {
 
     }//GEN-LAST:event_fecha_NacimientoKeyTyped
 
+    private void fecha_NacimientoFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fecha_NacimientoFacturaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha_NacimientoFacturaKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraSuperior;
@@ -2864,8 +2900,9 @@ public class VistaPanda extends javax.swing.JFrame {
     public static javax.swing.JPanel btn_1;
     public static javax.swing.JPanel btn_2;
     public static javax.swing.JPanel btn_3;
-    public static final com.toedter.calendar.JDateChooser fechaIngreso = new com.toedter.calendar.JDateChooser();
+    public static final com.toedter.calendar.JDateChooser fechaFactura = new com.toedter.calendar.JDateChooser();
     public static final com.toedter.calendar.JDateChooser fecha_Nacimiento = new com.toedter.calendar.JDateChooser();
+    public static final com.toedter.calendar.JDateChooser fecha_NacimientoFactura = new com.toedter.calendar.JDateChooser();
     private javax.swing.JLabel fondoLateral;
     public static javax.swing.JPanel ind_1;
     public static javax.swing.JPanel ind_2;
@@ -2906,6 +2943,7 @@ public class VistaPanda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel84;
     private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -2999,6 +3037,7 @@ public class VistaPanda extends javax.swing.JFrame {
         txfNombre.setEditable(true);
         txfApellidos.setEditable(true);
         txfCelular.setEditable(true);
+        fecha_NacimientoFactura.setEnabled(true);
     }
 
     public void desactivarCamposFactura() {
@@ -3006,6 +3045,7 @@ public class VistaPanda extends javax.swing.JFrame {
         txfNombre.setEditable(false);
         txfApellidos.setEditable(false);
         txfCelular.setEditable(false);
+        fecha_NacimientoFactura.setEnabled(false);
 
     }
 
@@ -3014,7 +3054,7 @@ public class VistaPanda extends javax.swing.JFrame {
         try {
             this.txfNumFactura.setText(null);
             java.util.Date fechaParseada = new SimpleDateFormat("dd/MM/yyyy").parse(fechaActual());
-            fechaIngreso.setDate(fechaParseada);
+            fechaFactura.setDate(fechaParseada);
             this.txfIdentificacion.setText("IDENTIFICACIÓN");
             this.txfNombre.setText("NOMBRES");
             this.txfApellidos.setText("APELLIDOS");
@@ -3022,6 +3062,7 @@ public class VistaPanda extends javax.swing.JFrame {
             this.txfPuntos.setText("0");
             this.txfTotalCompra.setText("TOTAL");
             this.lblPuntosCompra.setText("0");
+            this.fecha_NacimientoFactura.setDate(null);
             this.lblLimite.setVisible(false);
             this.txfIdentificacion.requestFocus(true);
             activarCamposFactura();
@@ -3039,6 +3080,7 @@ public class VistaPanda extends javax.swing.JFrame {
         this.txfCelularCliente.setText("CELULAR");
         this.txfPuntosCliente.setText("PUNTOS");
         this.txfBuscar.setText(null);
+        this.fecha_Nacimiento.setDate(null);
         activarCamposCliente();
         this.btnEditarCliente.setEnabled(true);
         this.btnActualizarCliente.setEnabled(false);
@@ -3053,6 +3095,7 @@ public class VistaPanda extends javax.swing.JFrame {
         this.txfApellidosCliente.setEditable(true);
         this.txfCelularCliente.setEditable(true);
         this.txfPuntosCliente.setEditable(true);
+        this.fecha_Nacimiento.setEnabled(true);
     }
 
     public void desactivarCamposCliente() {
@@ -3063,6 +3106,7 @@ public class VistaPanda extends javax.swing.JFrame {
         this.txfCelularCliente.setEditable(false);
         this.txfPuntosCliente.setEditable(false);
         this.txfBuscar.requestFocus(true);
+        this.fecha_Nacimiento.setEnabled(false);
     }
 
     public void registrarCliente() {
@@ -3084,8 +3128,10 @@ public class VistaPanda extends javax.swing.JFrame {
                 String apellido = txfApellidosCliente.getText().trim();
                 java.sql.Date fecha_nacimiento = null;
                 SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-                fecha_nacimiento = new java.sql.Date(sdf.parse(fechaSalida()).getTime());
-
+                try {
+                    fecha_nacimiento = new java.sql.Date(fecha_Nacimiento.getDate().getTime());
+                } catch (NullPointerException npe) {
+                }
                 long celular = 0;
 
                 if (txfCelularCliente.getText().trim().length() != 0 && !txfCelularCliente.getText().trim().equalsIgnoreCase("CELULAR")) {
@@ -3107,8 +3153,8 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Ingrese una cédula o celular válidos, por favor.");
-        } catch (ParseException ex) {
         }
+
     }
 
     public void registrarClienteEnFactura() {
@@ -3126,9 +3172,13 @@ public class VistaPanda extends javax.swing.JFrame {
                 int cedula = Integer.parseInt(txfIdentificacion.getText());
                 String nombre = txfNombre.getText().trim();
                 String apellido = txfApellidos.getText().trim();
+
                 java.sql.Date fecha_nacimiento = null;
                 SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-                fecha_nacimiento = new java.sql.Date(sdf.parse(fechaSalida()).getTime());
+                try {
+                    fecha_nacimiento = new java.sql.Date(fecha_NacimientoFactura.getDate().getTime());
+                } catch (NullPointerException npe) {
+                }
                 long celular = 0;
                 if (txfCelular.getText().trim().length() != 0 && !txfCelular.getText().trim().equalsIgnoreCase("CELULAR")) {
                     celular = Long.parseLong(txfCelular.getText());
@@ -3151,7 +3201,6 @@ public class VistaPanda extends javax.swing.JFrame {
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Ingrese una cédula o celular válidos, por favor.");
 
-        } catch (ParseException ex) {
         }
     }
 
@@ -3172,11 +3221,15 @@ public class VistaPanda extends javax.swing.JFrame {
                 int codigo = Integer.parseInt(txfNumFactura.getText());
                 int total_compra = Integer.parseInt(txfTotalCompra.getText());
 
-                java.sql.Date fecha = null;
+                java.sql.Date fecha_factura = null;
                 SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-                fecha = new java.sql.Date(sdf.parse(fechaSalida()).getTime());
 
-                Factura f = new Factura(codigo, fecha, total_compra, cedula);
+                try {
+                    fecha_factura = new java.sql.Date(fechaFactura.getDate().getTime());
+                } catch (NullPointerException npe) {
+                    JOptionPane.showMessageDialog(null, "Ingrese una fecha por favor");
+                }
+                Factura f = new Factura(codigo, fecha_factura, total_compra, cedula);
 
                 if (fDao.CrearFactura(f)) {
                     if (cDao.acumularPuntos(Integer.toString(cedula), lblPuntosCompra.getText())) {
@@ -3192,7 +3245,6 @@ public class VistaPanda extends javax.swing.JFrame {
                 }
             }
         } catch (NumberFormatException nfe) {
-        } catch (ParseException ex) {
         }
     }
 
@@ -3213,6 +3265,7 @@ public class VistaPanda extends javax.swing.JFrame {
                     txfCelularCliente.setText(null);
                 }
                 txfPuntosCliente.setText(rs.getString("puntos"));
+                fecha_Nacimiento.setDate(rs.getDate("fecha_nacimiento"));
                 desactivarCamposCliente();
                 btnRestarPuntos.setVisible(true);
             } else {
@@ -3256,7 +3309,7 @@ public class VistaPanda extends javax.swing.JFrame {
                 String celular = "0";
                 java.sql.Date fecha_nacimiento = null;
                 SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-                fecha_nacimiento = new java.sql.Date(sdf.parse(fechaSalida()).getTime());
+                fecha_nacimiento = new java.sql.Date(fecha_Nacimiento.getDate().getTime());
                 if (txfCelularCliente.getText().trim().length() != 0 && !txfCelularCliente.getText().trim().equalsIgnoreCase("CELULAR")) {
                     celular = txfCelularCliente.getText();
                 }
@@ -3277,8 +3330,8 @@ public class VistaPanda extends javax.swing.JFrame {
             }
         } catch (NumberFormatException nfe) {
 
-        } catch (ParseException ex) {
         }
+
     }
 
     public static String fechaActual() {
@@ -3293,12 +3346,6 @@ public class VistaPanda extends javax.swing.JFrame {
         return formatoFecha.format(fecha);
     }
 
-    public static String fechaSalida() {
-        Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-MM-dd");
-        return formatoFecha.format(fecha);
-    }
-
     public void buscarClienteFactura() {
 
         try {
@@ -3307,6 +3354,7 @@ public class VistaPanda extends javax.swing.JFrame {
             String celular = "";
             String puntos = "";
             String cedula = txfIdentificacion.getText().trim();
+            Date fecha_nacimiento = null;
 
             rs = cDao.buscar(cedula);
 
@@ -3315,11 +3363,14 @@ public class VistaPanda extends javax.swing.JFrame {
                 apellido_cliente = rs.getString("apellido");
                 celular = rs.getString("celular");
                 puntos = rs.getString("puntos");
+                fecha_nacimiento = rs.getDate("fecha_nacimiento");
                 txfIdentificacion.setEditable(false);
                 txfNombre.setText(nombre_cliente);
                 txfApellidos.setText(apellido_cliente);
                 txfCelular.setText(celular);
                 txfPuntos.setText(puntos);
+                fecha_NacimientoFactura.setDate(fecha_nacimiento);
+                fecha_NacimientoFactura.setEnabled(false);
                 txfNombre.setEditable(false);
                 txfApellidos.setEditable(false);
                 txfCelular.setEditable(false);

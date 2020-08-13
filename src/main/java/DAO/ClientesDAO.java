@@ -37,7 +37,7 @@ public class ClientesDAO {
             pst.setString(3, c.getApellido());
             pst.setLong(4, c.getCelular());
             pst.setInt(5, c.getPuntos());
-            pst.setDate(5, c.getFecha_nacimiento());
+            pst.setDate(6, c.getFecha_nacimiento());
 
             int n = pst.executeUpdate();
 
@@ -66,7 +66,7 @@ public class ClientesDAO {
 
     public boolean actualizar(String cedula, String nombre, String apellido, String celular, String puntos, Date fecha_nacimiento) {
 
-        sSql = "UPDATE cliente SET nombre = '" + nombre + "', fecha_nacimiento = '" + fecha_nacimiento + "'" + "', apellido = '" + apellido + "'"
+        sSql = "UPDATE cliente SET nombre = '" + nombre + "', fecha_nacimiento = '" + fecha_nacimiento + "', apellido = '" + apellido + "'"
                 + ", celular = '" + celular + "', puntos = '" + puntos + "' WHERE cedula_cliente = '" + cedula + "'";
 
         try {
@@ -131,7 +131,7 @@ public class ClientesDAO {
     public DefaultTableModel listar(String busca) {
 
         DefaultTableModel modelo;
-        String[] titulos = {"Cédula", "Nombre", "Celular", "Puntos Acumulados,Fecha de Nacimiento"};
+        String[] titulos = {"Cédula", "Nombre", "Celular", "Puntos Acumulados", "Fecha de Nacimiento"};
         String registro[] = new String[5];
         modelo = new DefaultTableModel(null, titulos) {
 
@@ -149,7 +149,7 @@ public class ClientesDAO {
         }
         String sql = "";
 
-        sql = "SELECT * FROM cliente WHERE (CAST(cedula_cliente as VARCHAR(10)) LIKE  ('" + busca + "%') OR UPPER(nombre) LIKE  UPPER('" + busca + "%')"
+        sql = "SELECT cedula_cliente,nombre,apellido,celular,puntos,to_char(fecha_nacimiento, 'DD/MM/YYYY') AS fecha_nacimiento FROM cliente WHERE (CAST(cedula_cliente as VARCHAR(10)) LIKE  ('" + busca + "%') OR UPPER(nombre) LIKE  UPPER('" + busca + "%')"
                 + " OR UPPER(apellido) LIKE  UPPER('" + busca + "%'))";
 
         try {
@@ -164,7 +164,7 @@ public class ClientesDAO {
                 registro[1] = rs.getString("nombre") + " " + rs.getString("apellido");
                 registro[2] = rs.getString("celular");
                 registro[3] = rs.getString("puntos");
-                registro[4] = rs.getDate("fecha_nacimiento").toString();
+                registro[4] = rs.getString("fecha_nacimiento");
 
                 modelo.addRow(registro);
 
@@ -212,7 +212,7 @@ public class ClientesDAO {
 
         };
 
-        sSql = "SELECT * FROM cliente ORDER BY puntos DESC;";
+        sSql = "SELECT * FROM cliente WHERE puntos > 99 ORDER BY puntos DESC ;";
 
         try {
             Statement st = cn.createStatement();
